@@ -1,0 +1,418 @@
+/* ===================================
+   Petrikov Lumina - Wedding Invitation Template 1
+   Custom CSS Styles - Complete Version
+   =================================== */
+
+/* CSS Variables - Theme Colors */
+:root {
+    --primary-color: #C9A961;
+    --primary-light: #E8D5A3;
+    --primary-dark: #8B5A2B;
+    --light-bg: #FFFAF5;
+    --light-secondary: #FFF5EB;
+    --dark-bg: #1A1A2E;
+    --dark-secondary: #16213E;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-light: #F5F5F5;
+}
+
+[data-bs-theme="dark"] {
+    --light-bg: var(--dark-bg);
+    --light-secondary: var(--dark-secondary);
+    --text-primary: var(--text-light);
+    --text-secondary: rgba(255, 255, 255, 0.7);
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-primary);
+    overflow-x: hidden;
+}
+
+/* Font Classes */
+.font-elegant {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+}
+
+.font-script {
+    font-family: 'Great Vibes', cursive;
+    font-weight: 400;
+}
+
+.font-modern {
+    font-family: 'Outfit', sans-serif;
+}
+
+/* Loading Page */
+.loading-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+}
+
+.loading-page.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Welcome Page */
+.welcome-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9998;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.welcome-page.hidden {
+    opacity: 0;
+    transform: scale(1.1);
+    pointer-events: none;
+}
+
+/* Root Invitation */
+#root {
+    transition: opacity 0.5s ease;
+}
+
+/* SVG Wave Separator */
+.svg-wrapper {
+    position: relative;
+    width: 100%;
+    line-height: 0;
+}
+
+.svg-wrapper svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.color-theme-svg {
+    background: transparent;
+}
+
+/* Cursor Pointer */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* Shadow Classes */
+.shadow-lg {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+.shadow {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Mouse Animation for Scroll Indicator */
+.mouse-animation {
+    width: 24px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+}
+
+.scroll-animation {
+    width: 4px;
+    height: 8px;
+    border-radius: 4px;
+    animation: scrollAnim 2s ease-in-out infinite;
+}
+
+@keyframes scrollAnim {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Countdown Timer Styles */
+.countdown-container {
+    padding: 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    border-radius: 1rem;
+    box-shadow: 0 10px 40px rgba(201, 169, 97, 0.3);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 0.75rem;
+    min-width: 70px;
+    backdrop-filter: blur(5px);
+}
+
+.countdown-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+}
+
+.countdown-label {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(5deg);
+    }
+}
+
+/* Heartbeat Animation */
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.1);
+    }
+}
+
+/* Button Styles */
+.btn {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Progress Bar */
+.progress {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    transition: width 0.3s ease;
+}
+
+/* Navbar Styles */
+.navbar {
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-nav .nav-link {
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    transform: translateY(-2px);
+}
+
+/* Modal Styles */
+.modal-content {
+    background: transparent;
+    border: none;
+}
+
+/* Confetti Container */
+#confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10000;
+    overflow: hidden;
+}
+
+/* Responsive Typography */
+@media (max-width: 576px) {
+    .countdown-number {
+        font-size: 1.5rem;
+    }
+
+    .countdown-item {
+        min-width: 60px;
+        padding: 0.5rem;
+    }
+
+    .countdown-label {
+        font-size: 0.65rem;
+    }
+
+    .font-script {
+        font-size: 0.9em !important;
+    }
+}
+
+/* Utility Classes */
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.object-fit-cover {
+    object-fit: cover;
+}
+
+.no-gap-bottom {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.hover-opacity-100 {
+    opacity: 0;
+}
+
+img {
+    transition: transform 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.05);
+}
+
+/* Animations */
+.animate-pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Gradient Text */
+.gradient-text {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 50%, var(--primary-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Badge Styles */
+.badge {
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+/* Print Styles */
+@media print {
+    .loading-page,
+    .welcome-page,
+    #btn-music,
+    #btn-theme,
+    #navbar-menu {
+        display: none !important;
+    }
+
+    #root {
+        opacity: 1 !important;
+    }
+}
+
+/* Rounded Classes */
+.rounded-4 {
+    border-radius: 1rem !important;
+}
+
+.rounded-3 {
+    border-radius: 0.75rem !important;
+}
+
+/* Text Colors */
+.text-gold {
+    color: var(--primary-color) !important;
+}
+
+/* Font Monospace */
+.font-monospace {
+    font-family: 'Courier New', monospace;
+}
+
+/* Hide Elements */
+.hidden {
+    display: none !important;
+}
+
+.visible {
+    display: block !important;
+}
+
+/* Opacity Utilities */
+.opacity-25 {
+    opacity: 0.25 !important;
+}
+
+.opacity-50 {
+    opacity: 0.5 !important;
+}
+
+.opacity-75 {
+    opacity: 0.75 !important;
+}
+
+/* Hover Overlay Effect */
+.position-relative:hover .hover-opacity-100 {
+    opacity: 1;
+}
