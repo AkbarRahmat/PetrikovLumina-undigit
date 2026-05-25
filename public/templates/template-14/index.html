@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cinematic - Platinum Invitation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --cine-gold: #C9A84C;
+            --cine-amber: #F2A65A;
+            --cine-dark: #050508;
+            --ine-card: #0F0F15;
+            --cine-border: #1E1E2A;
+            --cine-text: #C8C0D0;
+            --cine-gradient: linear-gradient(135deg, #C9A84C, #F2A65A, #E8915A);
+            --cine-overlay: linear-gradient(180deg, transparent 0%, rgba(5,5,8,0.4) 40%, rgba(5,5,8,0.95) 100%);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: var(--cine-dark);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .package-badge {
+            position: fixed; top: 0.75rem; left: 50%; transform: translateX(-50%);
+            z-index: 9999; background: rgba(5,5,8,0.85); backdrop-filter: blur(10px);
+            border: 1px solid rgba(201,168,76,0.3); color: var(--cine-gold);
+            padding: 0.3rem 1.2rem; border-radius: 2rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 3px;
+        }
+        .btn-back {
+            position: fixed; top: 0.75rem; left: 0.75rem; z-index: 9999;
+            background: rgba(5,5,8,0.85); backdrop-filter: blur(10px);
+            border: 1px solid rgba(201,168,76,0.3); color: var(--cine-gold);
+            padding: 0.4rem 1rem; border-radius: 2rem; font-size: 0.75rem; text-decoration: none;
+        }
+        .btn-back:hover { background: rgba(201,168,76,0.15); color: #fff; }
+        .watermark {
+            position: fixed; bottom: 4.5rem; left: 50%; transform: translateX(-50%);
+            z-index: 9990; background: rgba(5,5,8,0.6); backdrop-filter: blur(4px);
+            border: 1px solid rgba(201,168,76,0.15); color: var(--cine-gold);
+            padding: 0.2rem 1rem; border-radius: 2rem; font-size: 0.55rem; letter-spacing: 2px; opacity: 0.7;
+        }
+        .navbar-cine {
+            position: fixed; bottom: 1rem; left: 50%; transform: translateX(-50%);
+            z-index: 9998; background: rgba(5,5,8,0.92); backdrop-filter: blur(15px);
+            border: 1px solid rgba(201,168,76,0.2); border-radius: 3rem; padding: 0.6rem 1.4rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+        }
+        .navbar-cine .nav-link { color: rgba(255,255,255,0.75); font-size: 0.7rem; padding: 0.45rem 0.85rem; border-radius: 2rem; transition: all 0.3s; text-align: center; text-decoration: none; }
+        .navbar-cine .nav-link i { display: block; margin: 0 auto 0.2rem; font-size: 1rem; }
+        .navbar-cine .nav-link:hover, .navbar-cine .nav-link.active { color: var(--cine-gold); background: rgba(201,168,76,0.1); }
+        /* HERO - Cinematic */
+        .hero-section {
+            min-height: 100vh; display: flex; align-items: flex-end; justify-content: center;
+            position: relative; overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        }
+        .hero-bg img {
+            width: 100%; height: 100%; object-fit: cover;
+            animation: kenBurns 15s ease-in-out infinite alternate;
+        }
+        .hero-bg::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 70%; background: var(--cine-overlay); }
+        @keyframes kenBurns { 0% { transform: scale(1) translateX(0); } 100% { transform: scale(1.1) translateX(-2%); } }
+        .hero-vignette {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(5,5,8,0.6) 100%);
+        }
+        .hero-content { position: relative; z-index: 2; text-align: center; padding: 2rem 1.5rem 5rem; max-width: 600px; }
+        .hero-badge { display: inline-block; background: rgba(201,168,76,0.2); backdrop-filter: blur(10px); border: 1px solid rgba(201,168,76,0.3); color: var(--cine-gold); padding: 0.3rem 1.5rem; border-radius: 2rem; font-size: 0.65rem; font-weight: 700; letter-spacing: 3px; margin-bottom: 1.2rem; }
+        .hero-subtitle { font-family: 'Great Vibes', cursive; font-size: 2rem; color: var(--cine-gold); margin-bottom: 0.3rem; }
+        .hero-title { font-family: 'Playfair Display', serif; font-size: 4.5rem; font-weight: 900; line-height: 1; }
+        .hero-title .cine { background: var(--cine-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero-tagline { font-size: 0.85rem; color: var(--cine-text); letter-spacing: 6px; margin: 0.5rem 0; text-transform: uppercase; }
+        .hero-date { font-size: 1rem; color: var(--cine-gold); letter-spacing: 4px; font-weight: 600; margin-top: 0.5rem; }
+        /* SECTIONS */
+        .section-cine { padding: 5rem 0; position: relative; }
+        .section-cine:nth-child(odd) { background: rgba(255,255,255,0.012); }
+        .section-tag { display: inline-block; background: rgba(201,168,76,0.1); color: var(--cine-gold); padding: 0.2rem 1rem; border-radius: 2rem; font-size: 0.7rem; letter-spacing: 2px; margin-bottom: 0.5rem; border: 1px solid rgba(201,168,76,0.15); }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .section-title .cine { background: var(--cine-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        /* COUPLE */
+        .bride-card { text-align: center; padding: 2.5rem 1.5rem; background: var(--ine-card); border-radius: 1.5rem; border: 1px solid var(--cine-border); transition: all 0.3s; }
+        .bride-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-5px); }
+        .bride-photo { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 3px solid var(--cine-gold); padding: 3px; margin-bottom: 1rem; }
+        .bride-name { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--cine-gold); }
+        .bride-parents { font-size: 0.9rem; color: var(--cine-text); }
+        /* EVENTS */
+        .event-card { background: var(--ine-card); border: 1px solid var(--cine-border); border-radius: 1.5rem; padding: 2rem; transition: all 0.3s; text-align: center; }
+        .event-card:hover { border-color: rgba(242,166,90,0.3); background: rgba(255,255,255,0.03); }
+        .event-icon { width: 60px; height: 60px; background: var(--cine-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: var(--cine-dark); font-size: 1.5rem; }
+        .event-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--cine-amber); }
+        .event-date { font-size: 1.1rem; }
+        .event-time { color: var(--cine-text); }
+        .event-location { color: rgba(255,255,255,0.7); font-size: 0.85rem; }
+        /* TIMELINE */
+        .timeline { position: relative; padding-left: 2rem; }
+        .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--cine-gold), var(--cine-amber), transparent); }
+        .timeline-item { position: relative; padding-bottom: 2rem; }
+        .timeline-item::before { content: '▸'; position: absolute; left: -1.7rem; top: 0; font-size: 0.7rem; color: var(--cine-gold); background: var(--cine-dark); padding: 0 0.15rem; }
+        .timeline-year { font-size: 0.75rem; color: var(--cine-gold); font-weight: 700; letter-spacing: 2px; }
+        .timeline-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; }
+        .timeline-desc { font-size: 0.85rem; color: var(--cine-text); }
+        /* GALLERY - Cinematic Grid */
+        .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+        .gallery-item { border-radius: 0.75rem; overflow: hidden; cursor: pointer; position: relative; aspect-ratio: 16/9; border: 1px solid var(--cine-border); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: all 0.5s; }
+        .gallery-item:hover img { transform: scale(1.08); }
+        .gallery-item .gallery-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 0.5rem; background: linear-gradient(transparent, rgba(0,0,0,0.85)); color: #fff; font-size: 0.7rem; opacity: 0; transition: all 0.3s; }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-item.featured { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+        /* VIDEO BANNER */
+        .video-banner { position: relative; width: 100%; height: 400px; overflow: hidden; border-radius: 1.5rem; margin: 2rem 0; }
+        .video-banner img { width: 100%; height: 100%; object-fit: cover; }
+        .video-banner::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5,5,8,0.3); }
+        .video-play-btn {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 80px; height: 80px; border-radius: 50%; background: rgba(201,168,76,0.2); backdrop-filter: blur(10px);
+            border: 2px solid rgba(201,168,76,0.4); color: var(--cine-gold); font-size: 2rem;
+            display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 2;
+            transition: all 0.3s;
+        }
+        .video-play-btn:hover { background: rgba(201,168,76,0.35); transform: translate(-50%, -50%) scale(1.1); }
+        /* FORM */
+        .form-control-cine { background: rgba(255,255,255,0.03); border: 1px solid var(--cine-border); color: #fff; border-radius: 1rem; padding: 0.75rem 1rem; }
+        .form-control-cine:focus { background: rgba(255,255,255,0.05); border-color: var(--cine-gold); box-shadow: 0 0 0 2px rgba(201,168,76,0.1); color: #fff; }
+        .form-control-cine::placeholder { color: rgba(255,255,255,0.75); }
+        .btn-cine { background: var(--cine-gradient); color: var(--cine-dark); border: none; border-radius: 2rem; padding: 0.75rem 2rem; font-weight: 700; transition: all 0.3s; background-size: 200% auto; }
+        .btn-cine:hover { background-position: right center; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(201,168,76,0.3); color: var(--cine-dark); }
+        .comment-card { background: var(--ine-card); border: 1px solid var(--cine-border); border-radius: 1rem; padding: 1rem; margin-bottom: 0.75rem; }
+        .comment-name { font-weight: 700; color: var(--cine-amber); font-size: 0.9rem; }
+        .comment-text { color: var(--cine-text); font-size: 0.85rem; margin-top: 0.25rem; }
+        .comment-time { font-size: 0.7rem; color: rgba(255,255,255,0.75); }
+        .audio-player-fixed { position: fixed; top: 0.75rem; right: 0.75rem; z-index: 9990; }
+        .btn-audio { width: 40px; height: 40px; border-radius: 50%; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); color: var(--cine-gold); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; }
+        .btn-audio:hover { background: rgba(201,168,76,0.25); transform: scale(1.1); }
+        .btn-audio.playing { animation: pulseCine 1.5s infinite; }
+        @keyframes pulseCine { 0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,0.4);}50%{box-shadow:0 0 0 10px rgba(201,168,76,0);} }
+        /* TRAILER TEXT */
+        .trailer-text { font-size: 0.7rem; letter-spacing: 4px; color: rgba(255,255,255,0.75); text-transform: uppercase; margin-bottom: 0.5rem; }
+        @media (max-width:767px) {
+            .hero-title { font-size: 2.8rem; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-item.featured { grid-column: span 2; grid-row: span 1; }
+            .navbar-cine .nav-link { font-size: 0.6rem; padding: 0.3rem 0.45rem; }
+            .navbar-cine .nav-link i { font-size: 0.85rem; }
+            .section-title { font-size: 2rem; }
+            .video-banner { height: 250px; }
+        }
+    </style>
+</head>
+<body data-template="template-14">
+    <div class="package-badge"><i class="fa-solid fa-film me-2"></i>PLATINUM - CINEMATIC</div>
+    <a href="../../" class="btn-back"><i class="fa-solid fa-arrow-left me-2"></i>Kembali</a>
+    <div class="watermark"><i class="fa-regular fa-heart me-1"></i> Petrikov Lumina</div>
+    <div class="audio-player-fixed"><button class="btn-audio" id="btnAudio" onclick="toggleAudio()"><i class="fa-solid fa-music"></i></button></div>
+
+    <nav class="navbar-cine" id="navbarCine">
+        <div class="d-flex gap-1">
+            <a class="nav-link active" href="#home"><i class="fa-solid fa-house"></i>Home</a>
+            <a class="nav-link" href="#couple"><i class="fa-solid fa-heart"></i>Pasangan</a>
+            <a class="nav-link" href="#story"><i class="fa-solid fa-book"></i>Cerita</a>
+            <a class="nav-link" href="#events"><i class="fa-solid fa-calendar"></i>Acara</a>
+            <a class="nav-link" href="#gallery"><i class="fa-solid fa-images"></i>Galeri</a>
+            <a class="nav-link" href="#wishes"><i class="fa-solid fa-comment"></i>Ucapan</a>
+        </div>
+    </nav>
+
+    <!-- HERO - Cinematic -->
+    <section class="hero-section" id="home">
+        <div class="hero-bg">
+            <img src="https://picsum.photos/seed/cinematic-hero/1200/900" alt="Cinematic Background">
+        </div>
+        <div class="hero-vignette"></div>
+        <div class="hero-content">
+            <div data-aos="fade-down"><span class="hero-badge"><i class="fa-solid fa-clapperboard me-2"></i>CINEMATIC</span></div>
+            <div data-aos="fade-up" data-aos-delay="200">
+                <div class="trailer-text">Coming Soon — A Love Story</div>
+                <p class="hero-subtitle">Now Playing</p>
+                <h1 class="hero-title">Rafi & <span class="cine">Alana</span></h1>
+                <p class="hero-tagline">✦ Sebuah Kisah Cinta ✦</p>
+                <p class="hero-date">Sabtu, 10 Juli 2027</p>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="400" class="mt-4">
+                <a href="#couple" class="btn btn-cine"><i class="fa-solid fa-play me-2"></i>Putar Cerita</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section style="padding:2.5rem 0;border-top:1px solid var(--cine-border);border-bottom:1px solid var(--cine-border);">
+        <div class="container">
+            <div class="row justify-content-center" data-aos="fade-up">
+                <div class="col-12 text-center mb-3"><span class="section-tag">Menuju Hari Bahagia</span></div>
+                <div class="col-2 text-center"><div style="font-size:3rem;font-weight:700;color:var(--cine-gold);line-height:1;" id="days">00</div><div style="font-size:0.7rem;color:var(--cine-text);letter-spacing:2px;">Hari</div></div>
+                <div class="col-1 text-center" style="font-size:2rem;color:var(--cine-gold);opacity:0.3;">:</div>
+                <div class="col-2 text-center"><div style="font-size:3rem;font-weight:700;color:var(--cine-gold);line-height:1;" id="hours">00</div><div style="font-size:0.7rem;color:var(--cine-text);letter-spacing:2px;">Jam</div></div>
+                <div class="col-1 text-center" style="font-size:2rem;color:var(--cine-gold);opacity:0.3;">:</div>
+                <div class="col-2 text-center"><div style="font-size:3rem;font-weight:700;color:var(--cine-gold);line-height:1;" id="minutes">00</div><div style="font-size:0.7rem;color:var(--cine-text);letter-spacing:2px;">Menit</div></div>
+                <div class="col-1 text-center" style="font-size:2rem;color:var(--cine-gold);opacity:0.3;">:</div>
+                <div class="col-2 text-center"><div style="font-size:3rem;font-weight:700;color:var(--cine-gold);line-height:1;" id="seconds">00</div><div style="font-size:0.7rem;color:var(--cine-text);letter-spacing:2px;">Detik</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COUPLE -->
+    <section class="section-cine" id="couple">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="section-tag"><i class="fa-solid fa-star me-2"></i>PEMERAN UTAMA</span>
+                <h2 class="section-title">Kedua <span class="cine">Mempelai</span></h2>
+                <p class="text-muted">Bintang utama dalam kisah cinta ini</p>
+            </div>
+            <div class="row justify-content-center g-4">
+                <div class="col-md-5" data-aos="fade-right">
+                    <div class="bride-card">
+                        <img src="../../images/pengantin-pria.png" alt="Rafi" class="bride-photo">
+                        <h3 class="bride-name">Rafi Aditya</h3>
+                        <p class="bride-parents">Putra pertama dari<br>Bapak Hasan & Ibu Aminah</p>
+                    </div>
+                </div>
+                <div class="col-md-1 d-flex align-items-center justify-content-center" data-aos="zoom-in"><div style="font-size:3rem;color:var(--cine-gold);font-family:'Great Vibes',cursive;">&</div></div>
+                <div class="col-md-5" data-aos="fade-left">
+                    <div class="bride-card">
+                        <img src="../../images/pengantin-wanita.png" alt="Alana" class="bride-photo">
+                        <h3 class="bride-name">Alana Putri</h3>
+                        <p class="bride-parents">Putri pertama dari<br>Bapak Dimas & Ibu Sarah</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOVE STORY -->
+    <section class="section-cine" id="story">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="section-tag"><i class="fa-solid fa-scroll me-2"></i>NASKAH CERITA</span>
+                <h2 class="section-title">Perjalanan <span class="cine">Cinta</span></h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="timeline">
+                        <div class="timeline-item" data-aos="fade-up">
+                            <div class="timeline-year">Adegan 1 — 2021</div>
+                            <div class="timeline-title">Pertemuan di Layar Lebar</div>
+                            <div class="timeline-desc">Berawal dari sebuah festival film indie, takdir mempertemukan Rafi dan Alana di sebuah bioskop tua.</div>
+                        </div>
+                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                            <div class="timeline-year">Adegan 2 — 2023</div>
+                            <div class="timeline-title">Chemistry Tak Terbantahkan</div>
+                            <div class="timeline-desc">Dari teman menjadi lebih dari teman. Setiap adegan bersama terasa sempurna.</div>
+                        </div>
+                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                            <div class="timeline-year">Adegan 3 — 2025</div>
+                            <div class="timeline-title">Klimaks: Lamaran</div>
+                            <div class="timeline-desc">Rafi melamar Alana di rooftop dengan latar langit senja yang dramatis.</div>
+                        </div>
+                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                            <div class="timeline-year">Adegan 4 — 2027</div>
+                            <div class="timeline-title">Happy Ending: Pernikahan</div>
+                            <div class="timeline-desc">Bersatu dalam ikatan suci. Akhir yang bahagia, awal yang baru. 🎬</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEO BANNER -->
+    <section class="section-cine">
+        <div class="container">
+            <div class="text-center mb-4" data-aos="fade-up">
+                <span class="section-tag"><i class="fa-solid fa-video me-2"></i>TRAILER</span>
+                <h2 class="section-title">Kisah <span class="cine">Kami</span></h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-10" data-aos="zoom-in">
+                    <div class="video-banner">
+                        <img src="https://picsum.photos/seed/cinematic-trailer/1200/800" alt="Video Preview">
+                        <div class="video-play-btn" onclick="alert('🎬 Putar video cinematic perjalanan cinta Rafi & Alana')">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section class="section-cine" id="events">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="section-tag"><i class="fa-solid fa-calendar-check me-2"></i>JADWAL TAYANG</span>
+                <h2 class="section-title">Rangkaian <span class="cine">Acara</span></h2>
+            </div>
+            <div class="row justify-content-center g-4">
+                <div class="col-md-5" data-aos="flip-up">
+                    <div class="event-card">
+                        <div class="event-icon"><i class="fa-solid fa-ring"></i></div>
+                        <div class="event-name">Akad Nikah</div>
+                        <div class="event-date mt-2">Sabtu, 10 Juli 2027</div>
+                        <div class="event-time">08:00 - 10:00 WIB</div>
+                        <hr style="border-color:var(--cine-border);">
+                        <div class="event-location"><i class="fa-solid fa-location-dot me-1"></i>Studio 1 - Grand Cinema Hall<br>Jl. Film No.1, Jakarta</div>
+                        <a href="https://maps.google.com/?q=Jakarta" target="_blank" class="btn btn-sm btn-outline-light mt-3 rounded-pill"><i class="fa-solid fa-map-pin me-1"></i>Lihat Lokasi</a>
+                    </div>
+                </div>
+                <div class="col-md-5" data-aos="flip-up" data-aos-delay="200">
+                    <div class="event-card">
+                        <div class="event-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
+                        <div class="event-name">Resepsi</div>
+                        <div class="event-date mt-2">Sabtu, 10 Juli 2027</div>
+                        <div class="event-time">11:00 - 18:00 WIB</div>
+                        <hr style="border-color:var(--cine-border);">
+                        <div class="event-location"><i class="fa-solid fa-location-dot me-1"></i>Studio 1 - Grand Cinema Hall<br>Jl. Film No.1, Jakarta</div>
+                        <a href="https://maps.google.com/?q=Jakarta" target="_blank" class="btn btn-sm btn-outline-light mt-3 rounded-pill"><i class="fa-solid fa-map-pin me-1"></i>Lihat Lokasi</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section-cine" id="gallery">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="section-tag"><i class="fa-solid fa-images me-2"></i>GALERI</span>
+                <h2 class="section-title">Cuplikan <span class="cine">Film</span></h2>
+                <p class="text-muted">Momen-momen terbaik dalam bingkai sinematik</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="gallery-grid">
+                        <div class="gallery-item featured" onclick="openModal(this.querySelector('img').src)"><img src="https://picsum.photos/seed/cine1/800/600" alt="1"><div class="gallery-overlay">Scene Utama</div></div>
+                        <div class="gallery-item" onclick="openModal(this.querySelector('img').src)"><img src="https://picsum.photos/seed/cine2/600/800" alt="2"><div class="gallery-overlay">Close Up</div></div>
+                        <div class="gallery-item" onclick="openModal(this.querySelector('img').src)"><img src="https://picsum.photos/seed/cine3/600/800" alt="3"><div class="gallery-overlay">Wide Shot</div></div>
+                        <div class="gallery-item" onclick="openModal(this.querySelector('img').src)"><img src="https://picsum.photos/seed/cine4/600/800" alt="4"><div class="gallery-overlay">Golden Hour</div></div>
+                        <div class="gallery-item" onclick="openModal(this.querySelector('img').src)"><img src="https://picsum.photos/seed/cine5/600/800" alt="5"><div class="gallery-overlay">Behind Scene</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WISHES -->
+    <section class="section-cine" id="wishes">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="section-tag"><i class="fa-solid fa-comment me-2"></i>TESTIMONIAL</span>
+                <h2 class="section-title">Ucapan & <span class="cine">Doa</span></h2>
+                <p class="text-muted">Kirimkan review dan doa untuk film cinta kami</p>
+            </div>
+            <div class="row justify-content-center g-4">
+                <div class="col-md-5" data-aos="fade-right">
+                    <div class="comment-section" style="max-height:400px;overflow-y:auto;">
+                        <div class="comment-card"><div class="d-flex justify-content-between"><span class="comment-name">Mama Rina</span><span class="comment-time">5 menit lalu</span></div><div class="comment-text">Film cinta terbaik tahun ini! Love you both ❤️</div></div>
+                        <div class="comment-card"><div class="d-flex justify-content-between"><span class="comment-name">Bintang</span><span class="comment-time">20 menit lalu</span></div><div class="comment-text">Best love story ever! Congratulation 🎬🎉</div></div>
+                        <div class="comment-card"><div class="d-flex justify-content-between"><span class="comment-name">Tante Dewi</span><span class="comment-time">1 jam lalu</span></div><div class="comment-text">Barakallah! Happy ending yang sempurna 🤲✨</div></div>
+                    </div>
+                </div>
+                <div class="col-md-5" data-aos="fade-left">
+                    <form onsubmit="sendWishes(event)">
+                        <div class="mb-3"><input type="text" class="form-control form-control-cine" id="wishName" placeholder="Nama Anda (Kredit)" required></div>
+                        <div class="mb-3"><input type="text" class="form-control form-control-cine" id="wishKehadiran" placeholder="Hadir / Tidak Hadir"></div>
+                        <div class="mb-3"><textarea class="form-control form-control-cine" id="wishMessage" rows="4" placeholder="Tulis review dan doa..." required></textarea></div>
+                        
+                    <!-- Honeypot field - do not fill -->
+                    <div style="position:absolute;left:-9999px;opacity:0;" aria-hidden="true">
+                        <label for="website">Website</label>
+                        <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+                    </div>
+                    <button type="submit" class="btn btn-cine w-100"><i class="fa-solid fa-paper-plane me-2"></i>Kirim Ucapan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <section style="padding:4rem 0 6rem;text-align:center;">
+        <div class="container" data-aos="fade-up">
+            <div style="font-size:2rem;color:var(--cine-gold);">▸ ▸ ▸</div>
+            <h2 class="section-title mt-3" style="font-size:2rem;">Terima Kasih</h2>
+            <p class="text-muted">Terima kasih telah menyaksikan kisah cinta kami.<br>Sampai jumpa di pemutaran berikutnya!</p>
+            <div class="mt-4"><p style="font-family:'Great Vibes',cursive;font-size:3rem;background:var(--cine-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Rafi & Alana</p></div>
+            <hr style="border-color:var(--cine-border);max-width:200px;margin:1rem auto;">
+            <p class="text-muted" style="font-size:0.75rem;">&copy; 2027 Petrikov Lumina - Cinematic</p>
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-dark border-0">
+                <div class="modal-body p-0"><img src="" id="modalImage" class="w-100 rounded"></div>
+                <div class="modal-footer border-0 justify-content-center"><button type="button" class="btn btn-sm btn-cine" data-bs-dismiss="modal">Tutup</button></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, duration: 1000 });
+
+        function updateCountdown() {
+            const t = new Date('2027-07-10T08:00:00+07:00').getTime();
+            const n = Date.now(); const d = Math.max(0, t - n);
+            document.getElementById('days').textContent = String(Math.floor(d / 86400000)).padStart(2,'0');
+            document.getElementById('hours').textContent = String(Math.floor((d % 86400000) / 3600000)).padStart(2,'0');
+            document.getElementById('minutes').textContent = String(Math.floor((d % 3600000) / 60000)).padStart(2,'0');
+            document.getElementById('seconds').textContent = String(Math.floor((d % 60000) / 1000)).padStart(2,'0');
+        }
+        updateCountdown(); setInterval(updateCountdown, 1000);
+
+        let audio = null, isPlaying = false;
+        function toggleAudio() {
+            if (!audio) { audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3'); audio.loop = true; }
+            if (isPlaying) { audio.pause(); document.getElementById('btnAudio').classList.remove('playing'); document.getElementById('btnAudio').innerHTML = '<i class="fa-solid fa-music"></i>'; }
+            else { audio.play(); document.getElementById('btnAudio').classList.add('playing'); document.getElementById('btnAudio').innerHTML = '<i class="fa-solid fa-pause"></i>'; }
+            isPlaying = !isPlaying;
+        }
+
+        function openModal(src) { document.getElementById('modalImage').src = src; new bootstrap.Modal(document.getElementById('imageModal')).show(); }
+
+        function sendWishes(e) {
+            e.preventDefault();
+            const name = document.getElementById('wishName').value, msg = document.getElementById('wishMessage').value;
+            const card = document.createElement('div'); card.className = 'comment-card';
+            card.innerHTML = `<div class="d-flex justify-content-between"><span class="comment-name">${name}</span><span class="comment-time">Baru saja</span></div><div class="comment-text">${msg}</div>`;
+            document.querySelector('.comment-section').prepend(card);
+            e.target.reset(); alert('Ucapan berhasil dikirim! Terima kasih 🎬');
+        }
+
+        const sections = document.querySelectorAll('section[id]'), navLinks = document.querySelectorAll('.navbar-cine .nav-link');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(s => { if (window.scrollY >= s.offsetTop - 150) current = s.getAttribute('id'); });
+            navLinks.forEach(l => { l.classList.remove('active'); if (l.getAttribute('href') === '#' + current) l.classList.add('active'); });
+        });
+    </script>
+    <script src="/templates/js/api-integration.js"></script>
+</body>
+</html>

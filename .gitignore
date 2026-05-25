@@ -15,7 +15,6 @@ storage/framework/views/*
 !storage/framework/sessions/.gitkeep
 public/hot
 public/storage
-public/templates/template-*/index.html
 bootstrap/cache/*
 .idea
 .vscode

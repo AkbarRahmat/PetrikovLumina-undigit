@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="id" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Undangan Pernikahan - Rizky & Amanda</title>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #E91E63;
+            --primary-light: #F8BBD9;
+            --primary-dark: #AD1457;
+            --light-bg: #FFF0F5;
+            --dark-bg: #1A1025;
+            --dark-secondary: #2D1F3D;
+        }
+
+        /* Package Badge - Premium */
+        .package-badge {
+            position: fixed;
+            top: 0.75rem;
+            left: 0.75rem;
+            background: linear-gradient(135deg, #E91E63, #F8BBD9);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            z-index: 9990;
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .package-badge i { font-size: 0.7rem; }
+
+        /* ==================== PREMIUM PACKAGE - ROMANTIC PINK ==================== */
+
+        /* Premium floating hearts decoration */
+        .floating-hearts {
+            position: relative;
+            overflow: hidden;
+        }
+        .floating-hearts::before {
+            content: '♥ ♥ ♥ ♥ ♥';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 200%;
+            font-size: 2rem;
+            color: rgba(233, 30, 99, 0.1);
+            animation: floatHearts 10s linear infinite;
+            letter-spacing: 2rem;
+        }
+        @keyframes floatHearts {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(50%); }
+        }
+
+        /* Premium gradient border card */
+        .premium-gradient-card {
+            position: relative;
+            background: linear-gradient(var(--dark-bg), var(--dark-bg)) padding-box,
+                        linear-gradient(135deg, #E91E63, #F8BBD9) border-box;
+            border: 2px solid transparent;
+            border-radius: 1.5rem;
+            padding: 2rem;
+        }
+
+        /* Premium sparkle effect */
+        .premium-sparkle {
+            position: relative;
+        }
+        .premium-sparkle::after {
+            content: '✨';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 1.5rem;
+            animation: sparkleAnim 2s ease-in-out infinite;
+        }
+        @keyframes sparkleAnim {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        /* Premium feature grid */
+        .premium-feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .premium-feature-tile {
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.15), rgba(233, 30, 99, 0.05));
+            border: 1px solid rgba(233, 30, 99, 0.2);
+            border-radius: 1rem;
+            padding: 1.25rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .premium-feature-tile:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.2);
+        }
+        .premium-feature-tile i {
+            font-size: 1.75rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .premium-feature-tile span {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Premium RSVP enhanced styling */
+        .premium-rsvp-card {
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.2), rgba(233, 30, 99, 0.05));
+            border: 2px solid rgba(233, 30, 99, 0.3);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .premium-rsvp-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #E91E63, #F8BBD9, #E91E63);
+        }
+
+        /* Premium stat highlight */
+        .premium-stat {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(233, 30, 99, 0.1);
+            border-radius: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        .premium-stat-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #E91E63, #F8BBD9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .premium-stat-icon i { color: white; font-size: 1.25rem; }
+        .premium-stat-content .number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+        .premium-stat-content .label {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Premium input styling */
+        .premium-input {
+            background: rgba(0,0,0,0.2) !important;
+            border: 2px solid rgba(233, 30, 99, 0.3) !important;
+            border-radius: 1rem !important;
+            color: white !important;
+            padding: 0.75rem 1rem !important;
+            transition: all 0.3s ease !important;
+        }
+        .premium-input:focus {
+            border-color: #E91E63 !important;
+            box-shadow: 0 0 0 4px rgba(233, 30, 99, 0.2) !important;
+            background: rgba(233, 30, 99, 0.1) !important;
+        }
+
+        /* Premium button */
+        .premium-btn {
+            background: linear-gradient(135deg, #E91E63, #F8BBD9) !important;
+            color: white !important;
+            border: none !important;
+            border-radius: 2rem !important;
+            padding: 1rem 2rem !important;
+            font-weight: 600 !important;
+            transition: all 0.3s ease !important;
+            box-shadow: 0 5px 20px rgba(233, 30, 99, 0.3) !important;
+        }
+        .premium-btn:hover {
+            transform: translateY(-3px) !important;
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.4) !important;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; background: var(--light-bg); overflow-x: hidden; }
+
+        .font-elegant { font-family: 'Playfair Display', serif; font-weight: 600; }
+        .font-script { font-family: 'Dancing Script', cursive; font-weight: 400; }
+        .text-pink { color: var(--primary-color) !important; }
+
+        /* Loading Page */
+        .loading-page {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, #1A1025 0%, #2D1F3D 100%);
+            z-index: 9999; display: flex; justify-content: center; align-items: center;
+            transition: opacity 0.5s ease;
+        }
+        .loading-page.hidden { opacity: 0; pointer-events: none; display: none; }
+
+        /* Welcome Page */
+        .welcome-page {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, #1A1025 0%, #2D1F3D 100%);
+            z-index: 9998; display: flex; justify-content: center; align-items: center;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .welcome-page.hidden { opacity: 0; transform: scale(1.1); pointer-events: none; display: none; }
+
+        /* Root */
+        #root { transition: opacity 0.5s ease; }
+        #root.content-visible { opacity: 1 !important; }
+
+        /* Wave Separator */
+        .svg-wrapper { position: relative; width: 100%; line-height: 0; overflow: hidden; }
+        .svg-wrapper svg { width: 100%; height: auto; display: block; }
+
+        /* Animations */
+        @keyframes scrollAnim {
+            0% { opacity: 1; transform: translateY(0); }
+            50% { opacity: 0.5; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25%, 75% { transform: scale(1.1); }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        @keyframes toastIn {
+            from { opacity: 0; transform: translate(-50%, 20px); }
+            to { opacity: 1; transform: translate(-50%, 0); }
+        }
+
+        /* Mouse Animation */
+        .mouse-animation {
+            width: 24px; height: 36px; display: flex; justify-content: center;
+            padding-top: 8px; border: 2px solid rgba(255,255,255,0.5); border-radius: 12px;
+        }
+        .scroll-animation {
+            width: 4px; height: 8px; background: var(--primary-color); border-radius: 4px;
+            animation: scrollAnim 2s ease-in-out infinite;
+        }
+
+        /* Countdown */
+        .countdown-container {
+            padding: 1.5rem; background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            border-radius: 1rem; box-shadow: 0 10px 40px rgba(233, 30, 99, 0.3); max-width: 400px; margin: 0 auto;
+        }
+        .countdown-item {
+            display: flex; flex-direction: column; align-items: center;
+            padding: 0.75rem 1rem; background: rgba(255,255,255,0.2); border-radius: 0.75rem; min-width: 70px;
+        }
+        .countdown-number { font-size: 2rem; font-weight: 700; color: white; line-height: 1; }
+        .countdown-label { font-size: 0.7rem; color: rgba(255,255,255,0.9); margin-top: 0.25rem; text-transform: uppercase; }
+
+        /* Buttons */
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white; border: none; border-radius: 2rem;
+            padding: 0.75rem 2rem; font-weight: 600;
+            transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(233, 30, 99, 0.3);
+        }
+        .btn-primary-custom:hover {
+            transform: translateY(-2px); box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+        }
+
+        /* Gallery Hover */
+        .gallery-item { position: relative; overflow: hidden; border-radius: 1rem; }
+        .gallery-item img { transition: transform 0.3s ease; }
+        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+        /* Toast */
+        .toast-notification {
+            position: fixed; bottom: 20%; left: 50%; transform: translateX(-50%);
+            background: var(--primary-color); color: white; padding: 1rem 2rem;
+            border-radius: 2rem; z-index: 10001; animation: toastIn 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Modal */
+        .modal-content { background: transparent; border: none; }
+        .img-modal { border-radius: 1rem; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+
+        /* Bottom Navigation - Simple & Clean */
+        .bottom-nav-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(180deg, rgba(45,31,61,0.98) 0%, rgba(26,16,37,0.99) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 8px 16px;
+            padding-bottom: max(8px, env(safe-area-inset-bottom));
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Navigation Active State - See .bottom-nav .nav-item below */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 65px;
+            background: linear-gradient(180deg, rgba(45,31,61,0.98) 0%, rgba(26,16,37,0.99) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 8px;
+            /* Premium pink top border with glow */
+            border-top: 2px solid rgba(233, 30, 99, 0.5);
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3),
+                        0 -8px 30px rgba(233, 30, 99, 0.15);
+        }
+
+        /* Premium pink glow effect */
+        .bottom-nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(233, 30, 99, 0.8), transparent);
+            animation: pinkGlow 3s ease-in-out infinite;
+        }
+        @keyframes pinkGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .bottom-nav .nav-item {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex: 1 !important;
+            min-width: 0 !important;
+            text-decoration: none !important;
+            padding: 6px 4px !important;
+            color: rgba(255,255,255,0.85);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .bottom-nav .nav-item i {
+            font-size: 1.2rem !important;
+            display: block !important;
+            margin-bottom: 3px !important;
+        }
+
+        .bottom-nav .nav-item span {
+            font-size: 0.6rem !important;
+            font-weight: 500 !important;
+            display: block !important;
+            white-space: nowrap !important;
+            text-align: center !important;
+        }
+
+        .bottom-nav .nav-item:hover {
+            color: rgba(233, 30, 99, 0.8) !important;
+            transform: translateY(-3px);
+        }
+
+        .bottom-nav .nav-item.active {
+            color: #E91E63 !important;
+        }
+
+        .bottom-nav .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #E91E63, transparent);
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(233, 30, 99, 0.5);
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 576px) {
+            .bottom-nav { height: 60px; border-top-width: 1px; }
+            .bottom-nav .nav-item i { font-size: 1.1rem !important; }
+            .bottom-nav .nav-item span { font-size: 0.55rem !important; }
+            .bottom-nav::before { display: none; }
+        }
+
+        @media (min-width: 576px) {
+            .bottom-nav {
+                left: auto;
+                width: calc(33.333333% - 1rem);
+                right: 0.5rem;
+                bottom: 0.5rem;
+                border-radius: 16px 16px 0 0;
+                height: 60px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .bottom-nav { width: calc(50% - 1rem); }
+        }
+
+        @media (min-width: 992px) {
+            .bottom-nav { width: calc(33.333333% - 1rem); }
+        }
+
+        /* Rose petal decoration */
+        .rose-decoration {
+            position: absolute; font-size: 2rem; opacity: 0.15;
+            animation: leafFloat 4s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+    </style>
+</head>
+
+<body data-audio="" data-confetti="true" data-time="2025-12-20 09:00:00" data-template="template-2">
+
+    <!-- Package Badge -->
+    <div class="package-badge">
+        <i class="fas fa-heart"></i>
+        <span>PAKET PREMIUM</span>
+    </div>
+
+    <!-- ==================== LOADING PAGE ==================== -->
+    <div class="loading-page" id="loading">
+        <div class="text-center">
+            <i class="fa-solid fa-heart" style="font-size: 4rem; color: var(--primary-color); margin-bottom: 2rem; animation: heartbeat 1s ease-in-out infinite;"></i>
+            <h2 class="font-script mb-4" style="font-size: 2.5rem; color: var(--primary-color);">Rizky & Amanda</h2>
+            <div class="progress mx-auto" style="width: 200px;">
+                <div class="progress-bar" id="progress-bar" style="width: 0%;"></div>
+            </div>
+            <p class="mt-3" style="font-size: 0.85rem; color: rgba(255,255,255,0.8);" id="progress-info">Memuat...</p>
+        </div>
+    </div>
+
+    <!-- ==================== WELCOME PAGE ==================== -->
+    <div class="welcome-page" id="welcome">
+        <div style="position: absolute; top: 15%; left: 10%;">
+            <i class="fa-solid fa-heart text-pink" style="font-size: 2.5rem; opacity: 0.3; animation: heartbeat 2s ease-in-out infinite;"></i>
+        </div>
+        <div style="position: absolute; top: 25%; right: 15%;">
+            <i class="fa-solid fa-star text-pink" style="font-size: 1.8rem; opacity: 0.3; animation: sparkle 3s ease-in-out infinite;"></i>
+        </div>
+        <div style="position: absolute; bottom: 25%; left: 15%;">
+            <i class="fa-solid fa-heart text-pink" style="font-size: 2rem; opacity: 0.3; animation: heartbeat 2.5s ease-in-out infinite;"></i>
+        </div>
+        <div style="position: absolute; bottom: 20%; right: 20%;">
+            <i class="fa-solid fa-star text-pink" style="font-size: 1.5rem; opacity: 0.3; animation: sparkle 2.5s ease-in-out infinite;"></i>
+        </div>
+
+        <div class="text-center p-4" style="position: relative; z-index: 1;">
+            <span class="badge-custom mb-4 d-inline-block">THE WEDDING OF</span>
+
+            <img src="../../images/couple.png"
+                 alt="couple" class="rounded-circle mb-4"
+                 style="width: 200px; height: 200px; object-fit: cover; border: 5px solid var(--primary-color); box-shadow: 0 20px 60px rgba(0,0,0,0.4);">
+
+            <h1 class="font-script mb-4" style="font-size: 4rem; color: var(--primary-color); text-shadow: 2px 2px 10px rgba(0,0,0,0.3);">Rizky & Amanda</h1>
+
+            <p class="mb-2" style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Kepada Yth.</p>
+            <p class="fw-bold mb-4" style="font-size: 1.2rem; color: white;" id="guest-name">Bapak/Ibu/Saudara/i</p>
+
+            <p class="mb-4" style="font-size: 0.9rem; color: rgba(255,255,255,0.85);">
+                <i class="fa-solid fa-calendar-day me-1"></i>Minggu, 20 Desember 2025
+            </p>
+
+            <button class="btn-primary-custom btn-lg" id="btn-open" onclick="openInvitation()">
+                <i class="fa-solid fa-envelope-open me-2"></i>Buka Undangan
+            </button>
+        </div>
+    </div>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <div class="row m-0 p-0 opacity-0 pb-nav" id="root">
+
+        <!-- ==================== DESKTOP SIDEBAR ==================== -->
+        <div class="col-sm-5 col-md-6 col-lg-7 col-xl-8 d-none d-sm-block vh-100 sticky-top p-0 bg-dark-theme">
+            <div class="d-flex justify-content-center align-items-center vh-100 position-relative overflow-hidden">
+                <div style="position: absolute; width: 100%; height: 100%; opacity: 0.15;">
+                    <img src="https://picsum.photos/seed/bali1/800/1200" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="position: absolute; top: 15%; left: 10%;">
+                    <i class="fa-solid fa-heart text-pink" style="font-size: 2.5rem; opacity: 0.25; animation: heartbeat 3s ease-in-out infinite;"></i>
+                </div>
+                <div style="position: absolute; bottom: 30%; left: 15%;">
+                    <i class="fa-solid fa-star text-pink" style="font-size: 2rem; opacity: 0.25; animation: sparkle 4s ease-in-out infinite;"></i>
+                </div>
+
+                <div class="text-center p-5" style="position: relative; z-index: 1;">
+                    <span class="badge-custom mb-4 d-inline-block">THE WEDDING OF</span>
+                    <h1 class="font-script mb-4" style="font-size: 4.5rem; color: var(--primary-color); text-shadow: 2px 2px 10px rgba(0,0,0,0.3);">Rizky & Amanda</h1>
+                    <img src="../../images/couple.png"
+                         alt="couple" class="rounded-circle mb-4"
+                         style="width: 250px; height: 250px; object-fit: cover; border: 5px solid var(--primary-color); box-shadow: 0 20px 60px rgba(0,0,0,0.4);">
+                    <p style="font-size: 1.1rem; color: white;">
+                        <i class="fa-solid fa-calendar-day me-2"></i>Minggu, 20 Desember 2025
+                    </p>
+                    <p style="font-size: 0.95rem; color: var(--primary-color); opacity: 0.7;">
+                        <i class="fa-solid fa-map-marker-alt me-1"></i>The Mulia Resort, Bali
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== MOBILE CONTENT ==================== -->
+        <div class="col-sm-7 col-md-6 col-lg-5 col-xl-4 m-0 p-0 bg-light-theme">
+
+            <!-- ==================== HOME SECTION ==================== -->
+            <section id="home" class="position-relative overflow-hidden full-height" style="background: linear-gradient(180deg, var(--light-bg) 0%, #FFE4EC 100%);">
+                <div style="position: absolute; width: 100%; height: 100%; opacity: 0.15;">
+                    <img src="https://picsum.photos/seed/bali2/800/1200" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 150px; background: linear-gradient(180deg, rgba(233,30,99,0.15) 0%, transparent 100%);"></div>
+
+                <div class="position-relative text-center pt-5 pb-4 px-4">
+                    <span class="badge-custom mb-3 d-inline-block">UNDANGAN PERNIKAHAN</span>
+
+                    <div style="position: relative; display: inline-block;">
+                        <img src="../../images/couple.png"
+                             alt="couple" onclick="openModal(this)" class="rounded-circle"
+                             style="width: 200px; height: 200px; object-fit: cover; border: 5px solid var(--primary-color); box-shadow: 0 15px 40px rgba(0,0,0,0.2); cursor: pointer;">
+                        <i class="fa-solid fa-heart text-pink" style="position: absolute; top: 15px; right: 5px; font-size: 2rem; animation: heartbeat 1s ease-in-out infinite;"></i>
+                    </div>
+
+                    <h1 class="font-script mb-3" style="font-size: 3.5rem; color: var(--primary-dark);">Rizky & Amanda</h1>
+
+                    <p style="font-size: 1.1rem; color: #333;">
+                        <i class="fa-solid fa-calendar-day me-2" style="color: var(--primary-color);"></i>
+                        Minggu, 20 Desember 2025
+                    </p>
+                    <p class="mb-4 px-4" style="font-size: 0.95rem; color: #333;">
+                        <i class="fa-solid fa-map-marker-alt me-1" style="color: var(--primary-color);"></i>
+                        The Mulia Resort, Nusa Dua Bali
+                    </p>
+
+                    <!-- Mini Countdown -->
+                    <div class="d-flex justify-content-center gap-2 mb-4 flex-wrap">
+                        <div class="px-3 py-2 rounded-3 text-center" style="background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); min-width: 60px;">
+                            <span class="d-block fw-bold text-white" id="days-home" style="font-size: 1.3rem;">00</span>
+                            <span class="text-white opacity-75" style="font-size: 0.6rem;">Hari</span>
+                        </div>
+                        <div class="px-3 py-2 rounded-3 text-center" style="background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); min-width: 60px;">
+                            <span class="d-block fw-bold text-white" id="hours-home" style="font-size: 1.3rem;">00</span>
+                            <span class="text-white opacity-75" style="font-size: 0.6rem;">Jam</span>
+                        </div>
+                        <div class="px-3 py-2 rounded-3 text-center" style="background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); min-width: 60px;">
+                            <span class="d-block fw-bold text-white" id="minutes-home" style="font-size: 1.3rem;">00</span>
+                            <span class="text-white opacity-75" style="font-size: 0.6rem;">Menit</span>
+                        </div>
+                        <div class="px-3 py-2 rounded-3 text-center" style="background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); min-width: 60px;">
+                            <span class="d-block fw-bold text-white" id="seconds-home" style="font-size: 1.3rem;">00</span>
+                            <span class="text-white opacity-75" style="font-size: 0.6rem;">Detik</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-primary-custom mb-4" onclick="saveToCalendar()">
+                        <i class="fa-solid fa-calendar-plus me-2"></i>Save to Calendar
+                    </button>
+
+                    <!-- Scroll Indicator -->
+                    <div class="d-flex flex-column align-items-center mt-5">
+                        <p style="font-size: 0.75rem; color: #555;">Scroll Down</p>
+                        <div class="mouse-animation">
+                            <div class="scroll-animation"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wave -->
+                <div class="svg-wrapper">
+                    <svg viewBox="0 0 1440 320"><path fill="#1A1025" d="M0,160L48,144C96,128,192,96,288,106.7C384,117,480,171,576,165.3C672,160,768,96,864,96C960,96,1056,160,1152,154.7C1248,149,1344,75,1392,37.3L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+                </div>
+            </section>
+
+            <!-- ==================== MEMPELAI SECTION ==================== -->
+            <section id="bride" class="py-5 bg-dark-theme">
+                <div class="container text-center px-4">
+                    <span class="badge-custom mb-4 d-inline-block">MOMENT BAHAGIA</span>
+                    <h2 class="font-script mb-4" style="font-size: 2.5rem; color: var(--primary-color);">Assalamualaikum</h2>
+                    <p class="mb-5" style="font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.8;">
+                        Dengan memohon ridho Allah SWT dan segenap kerendahan hati,<br>
+                        kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara pernikahan kami:
+                    </p>
+
+                    <div class="mb-5" style="animation: fadeInRight 1s ease;">
+                        <div style="position: relative; display: inline-block;">
+                            <img src="../../images/pengantin-pria.png"
+                                 alt="groom" onclick="openModal(this)" class="rounded-circle"
+                                 style="width: 160px; height: 160px; object-fit: cover; border: 4px solid var(--primary-color); cursor: pointer;">
+                            <i class="fa-solid fa-heart text-pink" style="position: absolute; top: -5px; right: -5px; font-size: 1.5rem; animation: heartbeat 1s ease-in-out infinite;"></i>
+                        </div>
+                        <h3 class="font-script mt-3 mb-2" style="font-size: 2.25rem; color: var(--primary-color);">Rizky Pratama</h3>
+                        <p style="font-size: 1rem; color: white;">Putra pertama dari</p>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Bapak Dr. Hendra Pratama</p>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">dan</p>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Ibu Diana Pratama</p>
+                    </div>
+
+                    <h2 style="font-size: 4rem; color: var(--primary-color);">&</h2>
+
+                    <div style="animation: fadeInLeft 1s ease;">
+                        <div style="position: relative; display: inline-block;">
+                            <img src="../../images/pengantin-wanita.png"
+                                 alt="bride" onclick="openModal(this)" class="rounded-circle"
+                                 style="width: 160px; height: 160px; object-fit: cover; border: 4px solid var(--primary-color); cursor: pointer;">
+                            <i class="fa-solid fa-heart text-pink" style="position: absolute; top: -5px; right: -5px; font-size: 1.5rem; animation: heartbeat 1s ease-in-out infinite;"></i>
+                        </div>
+                        <h3 class="font-script mt-3 mb-2" style="font-size: 2.25rem; color: var(--primary-color);">Amanda Putri</h3>
+                        <p style="font-size: 1rem; color: white;">Putri pertama dari</p>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Bapak Ir. Susanto</p>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">dan</p>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Ibu Maya Susanto</p>
+                    </div>
+                </div>
+
+                <div class="svg-wrapper">
+                    <svg viewBox="0 0 1440 320"><path fill="#2D1F3D" d="M0,192L40,181.3C80,171,160,149,240,149.3C320,149,400,171,480,165.3C560,160,640,128,720,128C800,128,880,160,960,186.7C1040,213,1120,235,1200,218.7C1280,203,1360,149,1400,122.7L1440,96L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path></svg>
+                </div>
+            </section>
+
+            <!-- ==================== QUOTES SECTION ==================== -->
+            <section class="py-5" style="background: #2D1F3D;">
+                <div class="container text-center px-4">
+                    <h2 class="font-elegant mb-4" style="font-size: 1.25rem; color: rgba(255,255,255,0.8); letter-spacing: 2px;">Firman Allah SWT</h2>
+
+                    <div class="gift-card mb-4" style="animation: fadeInDown 1s ease;">
+                        <p style="font-size: 1.05rem; color: white; line-height: 2; font-family: 'Playfair Display', serif;">
+                            "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu merasa tenang dan tenteram kepadanya, dan Dia menjadikan di antaramu mawaddah dan rahmah."
+                        </p>
+                        <p class="m-0 mt-3" style="font-size: 0.9rem; color: var(--primary-color); font-weight: 600;">QS. Ar-Rum: 21</p>
+                    </div>
+
+                    <div class="gift-card" style="animation: fadeInUp 1s ease;">
+                        <p style="font-size: 1.05rem; color: white; line-height: 2; font-family: 'Playfair Display', serif;">
+                            "Dan segala sesuatu Kami ciptakan berpasang-pasangan agar kamu mengingat (kebesaran Allah)."
+                        </p>
+                        <p class="m-0 mt-3" style="font-size: 0.9rem; color: var(--primary-color); font-weight: 600;">QS. Adh-Dhariyat: 49</p>
+                    </div>
+                </div>
+
+                <div class="svg-wrapper">
+                    <svg viewBox="0 0 1440 320"><path fill="#1A1025" d="M0,96L30,106.7C60,117,120,139,180,154.7C240,171,300,181,360,186.7C420,192,480,192,540,181.3C600,171,660,149,720,154.7C780,160,840,192,900,208C960,224,1020,224,1080,208C1140,192,1200,160,1260,138.7C1320,117,1380,107,1410,101.3L1440,96L1440,0L1410,0C1380,0,1320,0,1260,0C1200,0,1140,0,1080,0C1020,0,960,0,900,0C840,0,780,0,720,0C660,0,600,0,540,0C480,0,420,0,360,0C300,0,240,0,180,0C120,0,60,0,30,0L0,0Z"></path></svg>
+                </div>
+            </section>
+
+            <!-- ==================== WEDDING DATE SECTION ==================== -->
+            <section id="wedding-date" class="py-5 bg-dark-theme">
+                <div class="container text-center px-4">
+                    <span class="badge-custom mb-4 d-inline-block">SAVE THE DATE</span>
+                    <h2 class="font-script mb-4" style="font-size: 2.5rem; color: var(--primary-color);">Moment Bahagia</h2>
+
+                    <!-- Premium Countdown with glow -->
+                    <div class="countdown-container mb-4 premium-gradient-card">
+                        <div class="d-flex justify-content-center gap-3 flex-wrap">
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="days">00</span>
+                                <span class="countdown-label">Hari</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="hours">00</span>
+                                <span class="countdown-label">Jam</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="minutes">00</span>
+                                <span class="countdown-label">Menit</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="seconds">00</span>
+                                <span class="countdown-label">Detik</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="mb-4" style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">
+                        Dengan memohon rahmat dan ridho Allah SWT, insyaAllah kami akan diselenggarakan:
+                    </p>
+
+                    <!-- Premium Event Cards -->
+                    <div class="premium-feature-grid mb-4">
+                        <div class="premium-feature-tile" style="animation: fadeInRight 1s ease;">
+                            <i class="fas fa-ring"></i>
+                            <span>Akad</span>
+                        </div>
+                        <div class="premium-feature-tile" style="animation: fadeInLeft 1s ease;">
+                            <i class="fas fa-glass-cheers"></i>
+                            <span>Resepsi</span>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center g-3 mb-4">
+                        <div class="col-6" style="animation: fadeInRight 1s ease;">
+                            <div class="p-4 rounded-4 gift-card" style="border-color: rgba(233, 30, 99, 0.3);">
+                                <h3 class="font-script mb-2" style="font-size: 1.75rem; color: var(--primary-color);">Akad</h3>
+                                <p style="font-size: 1rem; color: white;"><i class="fa-regular fa-clock me-2"></i>09.00 WIB - Selesai</p>
+                                <p style="font-size: 0.85rem; color: rgba(255,255,255,0.8);">Garden Pavilion</p>
+                            </div>
+                        </div>
+                        <div class="col-6" style="animation: fadeInLeft 1s ease;">
+                            <div class="p-4 rounded-4 gift-card">
+                                <h3 class="font-script mb-2" style="font-size: 1.75rem; color: var(--primary-color);">Resepsi</h3>
+                                <p style="font-size: 1rem; color: white;"><i class="fa-regular fa-clock me-2"></i>11.00 WIB - 15.00 WIB</p>
+                                <p style="font-size: 0.85rem; color: rgba(255,255,255,0.8);">Beachfront Deck</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4" style="animation: fadeInUp 1s ease;">
+                        <p class="mb-3" style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Dress Code:</p>
+                        <div class="d-flex justify-content-center gap-3 mb-2">
+                            <div class="color-circle" style="background: linear-gradient(135deg, #E91E63, #F8BBD9);"></div>
+                            <div class="color-circle" style="background: linear-gradient(135deg, #FFFFFF, #FFE4EC);"></div>
+                            <div class="color-circle" style="background: linear-gradient(135deg, #9C27B0, #E1BEE7);"></div>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--primary-color);">Pink, White & Purple</p>
+                    </div>
+
+                    <div class="mb-4" style="animation: fadeInUp 1s ease;">
+                        <a href="https://maps.google.com/?q=The+Mulia+Resort+Bali+Nusa+Dua" target="_blank" class="btn-primary-custom">
+                            <i class="fa-solid fa-map-location-dot me-2"></i>Lihat Google Maps
+                        </a>
+                        <p class="mt-3 mb-1" style="font-size: 0.85rem; color: rgba(255,255,255,0.8);">
+                            <i class="fa-solid fa-building me-1"></i>The Mulia Resort
+                        </p>
+                        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.85);">Nusa Dua, Bali</p>
+                    </div>
+                </div>
+
+                <div class="svg-wrapper">
+                    <svg viewBox="0 0 1440 320"><path fill="#FFF0F5" d="M0,96L30,106.7C60,117,120,139,180,154.7C240,171,300,181,360,186.7C420,192,480,192,540,181.3C600,171,660,149,720,154.7C780,160,840,192,900,208C960,224,1020,224,1080,208C1140,192,1200,160,1260,138.7C1320,117,1380,107,1410,101.3L1440,96L1440,0L1410,0C1380,0,1320,0,1260,0C1200,0,1140,0,1080,0C1020,0,960,0,900,0C840,0,780,0,720,0C660,0,600,0,540,0C480,0,420,0,360,0C300,0,240,0,180,0C120,0,60,0,30,0L0,0Z"></path></svg>
+                </div>
+            </section>
+
+            <!-- ==================== RSVP SECTION ==================== -->
+            <section id="rsvp" class="py-5 bg-light-theme">
+                <div class="container px-4">
+                    <span class="badge-custom mb-3 d-inline-block" style="background: rgba(173,20,87,0.1); color: #AD1457;">RSVP</span>
+
+                    <!-- Premium RSVP Header -->
+                    <div class="text-center mb-4">
+                        <h2 class="font-script text-center mb-2" style="font-size: 2rem; color: #AD1457;">Konfirmasi Kehadiran</h2>
+                        <p style="font-size: 0.85rem; color: #444;">Hadir & doakan kami</p>
+
+                        <!-- Premium Feature Pills -->
+                        <div class="d-flex justify-content-center gap-2 flex-wrap mt-3">
+                            <span class="premium-feature-card">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Konfirmasi Hadir</span>
+                            </span>
+                            <span class="premium-feature-card">
+                                <i class="fas fa-users"></i>
+                                <span>+1 Tamu</span>
+                            </span>
+                            <span class="premium-feature-card confetti-ready">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Kirim Pesan</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="rsvp-card mx-auto" style="max-width: 400px; animation: fadeInUp 1s ease; background: white; border-radius: 1.25rem; padding: 1.5rem; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
+                        <form id="rsvpForm">
+                            <div class="mb-3">
+                                <label class="form-label" style="color: #333; font-weight: 500;">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="rsvpName" placeholder="Masukkan nama Anda" required style="border-radius: 0.75rem; padding: 0.7rem 1rem;">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" style="color: #333; font-weight: 500;">Jumlah Tamu</label>
+                                <select class="form-select" id="rsvpGuests" style="border-radius: 0.75rem; padding: 0.7rem 1rem;">
+                                    <option value="1">1 Orang</option>
+                                    <option value="2">2 Orang</option>
+                                    <option value="3">3 Orang</option>
+                                    <option value="4">4 Orang</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" style="color: #333; font-weight: 500;">Konfirmasi Kehadiran</label>
+                                <select class="form-select" id="rsvpPresence" style="border-radius: 0.75rem; padding: 0.7rem 1rem;">
+                                    <option value="hadir">Hadir</option>
+                                    <option value="tidak">Tidak Hadir</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" style="color: #333; font-weight: 500;">Nomor WhatsApp</label>
+                                <input type="tel" class="form-control" id="rsvpPhone" placeholder="08xxxxxxxxxx" style="border-radius: 0.75rem; padding: 0.7rem 1rem;">
+                            </div>
+                            <button type="submit" class="btn btn-primary-custom w-100">
+                                <i class="fa-solid fa-paper-plane me-2"></i>Kirim RSVP
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="svg-wrapper">
+                    <svg viewBox="0 0 1440 320"><path fill="#1A1025" d="M0,224L34.3,234.7C68.6,245,137,267,206,266.7C274.3,267,343,245,411,234.7C480,224,549,224,617,213.3C685.7,203,754,181,823,197.3C891.4,213,960,267,1029,266.7C1097.1,267,1166,213,1234,192C1302.9,171,1371,181,1406,186.7L1440,192L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
+                </div>
+            </section>
+
+            <!-- ==================== GALLERY SECTION ==================== -->
+            <section id="gallery" class="py-5 bg-dark-theme">
+                <div class="container px-4">
+                    <span class="badge-custom mb-4 d-inline-block">OUR GALLERY</span>
+                    <h2 class="font-script text-center mb-4" style="font-size: 2rem; color: var(--primary-color);">Galeri</h2>
+
+                    <div class="row g-3">
+                        <div class="col-6" style="animation: fadeInUp 1s ease;">
+                            <div class="gallery-item rounded-4 overflow-hidden shadow-lg">
+                                <img src="https://picsum.photos/seed/balinese1/600/400"
+                                     alt="gallery 1" onclick="openModal(this)" class="w-100"
+                                     style="height: 180px; object-fit: cover; cursor: pointer;">
+                                <div class="gallery-overlay rounded-4">
+                                    <i class="fa-solid fa-expand text-white" style="font-size: 1.5rem;"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6" style="animation: fadeInUp 1s ease; animation-delay: 0.1s;">
+                            <div class="gallery-item rounded-4 overflow-hidden shadow-lg">
+                                <img src="https://picsum.photos/seed/balinese2/600/400"
+                                     alt="gallery 2" onclick="openModal(this)" class="w-100"
+                                     style="height: 180px; object-fit: cover; cursor: pointer;">
+                                <div class="gallery-overlay rounded-4">
+                                    <i class="fa-solid fa-expand text-white" style="font-size: 1.5rem;"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6" style="animation: fadeInUp 1s ease; animation-delay: 0.2s;">
+                            <div class="gallery-item rounded-4 overflow-hidden shadow-lg">
+                                <img src="https://picsum.photos/seed/balinese3/600/400"
+                                     alt="gallery 3" onclick="openModal(this)" class="w-100"
+                                     style="height: 180px; object-fit: cover; cursor: pointer;">
+                                <div class="gallery-overlay rounded-4">
+                                    <i class="fa-solid fa-expand text-white" style="font-size: 1.5rem;"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6" style="animation: fadeInUp 1s ease; animation-delay: 0.3s;">
+                            <div class="gallery-item rounded-4 overflow-hidden shadow-lg">
+                                <img src="https://picsum.photos/seed/balinese4/600/400"
+                                     alt="gallery 4" onclick="openModal(this)" class="w-100"
+                                     style="height: 180px; object-fit: cover; cursor: pointer;">
+                                <div class="gallery-overlay rounded-4">
+                                    <i class="fa-solid fa-expand text-white" style="font-size: 1.5rem;"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6" style="animation: fadeInUp 1s ease; animation-delay: 0.4s;">
+                            <div class="gallery-item rounded-4 overflow-hidden shadow-lg">
+                                <img src="https://picsum.photos/seed/balinese5/600/400"
+                                     alt="gallery 5" onclick="openModal(this)" class="w-100"
+                                     style="height: 180px; object-fit: cover; cursor: pointer;">
+                                <div class="gallery-overlay rounded-4">
+                                    <i class="fa-solid fa-expand text-white" style="font-size: 1.5rem;"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6" style="animation: fadeInUp 1s ease; animation-delay: 0.5s;">
+                            <div class="gallery-item rounded-4 overflow-hidden shadow-lg">
+                                <img src="https://picsum.photos/seed/balinese6/600/400"
+                                     alt="gallery 6" onclick="openModal(this)" class="w-100"
+                                     style="height: 180px; object-fit: cover; cursor: pointer;">
+                                <div class="gallery-overlay rounded-4">
+                                    <i class="fa-solid fa-expand text-white" style="font-size: 1.5rem;"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="svg-wrapper">
+                    <svg viewBox="0 0 1440 320"><path fill="#2D1F3D" d="M0,224L34.3,234.7C68.6,245,137,267,206,266.7C274.3,267,343,245,411,234.7C480,224,549,224,617,213.3C685.7,203,754,181,823,197.3C891.4,213,960,267,1029,266.7C1097.1,267,1166,213,1234,192C1302.9,171,1371,181,1406,186.7L1440,192L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
+                </div>
+            </section>
+
+            <!-- ==================== LOVE GIFT SECTION ==================== -->
+            <section id="gift" class="py-5 bg-dark-theme">
+                <div class="container text-center px-4">
+                    <span class="badge-custom mb-4 d-inline-block">LOVE GIFT</span>
+                    <h2 class="font-script mb-4" style="font-size: 2rem; color: var(--primary-color);">Love Gift</h2>
+                    <p class="mb-4" style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">
+                        Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i<br>
+                        berkenan memberikan tanda cinta untuk pernikahan kami.
+                    </p>
+
+                    <div class="gift-card mx-auto mb-3" style="max-width: 400px; animation: fadeInUp 1s ease;">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <div class="text-start">
+                                <p style="font-size: 1.1rem; color: white; font-weight: 600;">
+                                    <i class="fa-solid fa-user me-2"></i>Rizky Pratama
+                                </p>
+                                <p style="font-size: 0.85rem; color: rgba(255,255,255,0.8);">Bank Central Asia (BCA)</p>
+                            </div>
+                            <button class="btn-primary-custom" style="padding: 0.5rem 1rem;" onclick="copyToClipboard('2345678901')">
+                                <i class="fa-solid fa-copy me-1"></i>Salin
+                            </button>
+                        </div>
+                        <div class="p-3 rounded-3" style="background: rgba(0,0,0,0.3);">
+                            <p class="mb-0" style="font-size: 1.25rem; color: var(--primary-color); letter-spacing: 3px; font-weight: 600;">2345 6789 01</p>
+                        </div>
+                    </div>
+
+                    <div class="gift-card mx-auto" style="max-width: 400px; animation: fadeInUp 1s ease; animation-delay: 0.2s;">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <div class="text-start">
+                                <p style="font-size: 1.1rem; color: white; font-weight: 600;">
+                                    <i class="fa-solid fa-user me-2"></i>Amanda Putri
+                                </p>
+                                <p style="font-size: 0.85rem; color: rgba(255,255,255,0.8);">Bank Mandiri</p>
+                            </div>
+                            <button class="btn-primary-custom" style="padding: 0.5rem 1rem;" onclick="copyToClipboard('1300098765432')">
+                                <i class="fa-solid fa-copy me-1"></i>Salin
+                            </button>
+                        </div>
+                        <div class="p-3 rounded-3" style="background: rgba(0,0,0,0.3);">
+                            <p class="mb-0" style="font-size: 1.25rem; color: var(--primary-color); letter-spacing: 3px; font-weight: 600;">1300 0987 6543 2</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== COMMENT SECTION ==================== -->
+            <section id="comment" class="py-5 bg-dark-theme">
+                <div class="container px-4">
+                    <span class="badge-custom mb-4 d-inline-block">UCAPAN & DOA</span>
+                    <h2 class="font-script mb-3" style="font-size: 2rem; color: var(--primary-color);">Buku Tamu</h2>
+                    <p class="comment-count mb-4" id="comment-count">0 Ucapan</p>
+
+                    <!-- Comment Form -->
+                    <div class="comment-form mb-4" style="animation: fadeInUp 1s ease;">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="comment-name" placeholder="Nama Anda" required>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" id="comment-message" rows="3" placeholder="Tulis ucapan dan doa Anda..." required></textarea>
+                        </div>
+                        <button class="btn-primary-custom" onclick="addComment()">
+                            <i class="fa-solid fa-paper-plane me-2"></i>Kirim Ucapan
+                        </button>
+                    </div>
+
+                    <!-- Comments List -->
+                    <div id="comments-list" class="text-start"></div>
+                </div>
+
+                <div class="svg-wrapper">
+                    <svg viewBox="0 0 1440 320"><path fill="#2D1F3D" d="M0,224L34.3,234.7C68.6,245,137,267,206,266.7C274.3,267,343,245,411,234.7C480,224,549,224,617,213.3C685.7,203,754,181,823,197.3C891.4,213,960,267,1029,266.7C1097.1,267,1166,213,1234,192C1302.9,171,1371,181,1406,186.7L1440,192L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
+                </div>
+            </section>
+
+            <!-- ==================== CLOSING SECTION ==================== -->
+            <section class="py-5 text-center" style="background: #2D1F3D;">
+                <div class="container px-4">
+                    <p class="mb-4" style="font-size: 0.95rem; color: rgba(255,255,255,0.8); line-height: 2;">
+                        Atas perhatian dan hadirnya Bapak/Ibu/Saudara/i,<br>
+                        kami ucapkan terima kasih.<br>
+                        Semoga Allah SWT selalu meridhai dan memberkahi langkah hidup kami.
+                    </p>
+
+                    <h2 class="font-script mb-4" style="font-size: 2.5rem; color: var(--primary-color);">Wassalamualaikum Warahmatullahi Wabarakatuh</h2>
+
+                    <img src="../../images/couple.png"
+                         alt="signature" class="rounded-circle mb-4"
+                         style="width: 100px; height: 100px; object-fit: cover; border: 3px solid var(--primary-color);">
+
+                    <div class="d-flex justify-content-center gap-3 mt-4">
+                        <a href="#" class="text-pink"><i class="fa-brands fa-instagram fa-2x"></i></a>
+                        <a href="#" class="text-pink"><i class="fa-brands fa-whatsapp fa-2x"></i></a>
+                        <a href="#" class="text-pink"><i class="fa-brands fa-facebook fa-2x"></i></a>
+                    </div>
+
+                    <div class="mt-4">
+                        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.85);">Made with</p>
+                        <p style="font-size: 0.9rem; color: var(--primary-color);">
+                            <i class="fa-solid fa-heart me-1"></i>Petrikov Lumina - Undangan Digital
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== BOTTOM NAVIGATION ==================== -->
+            <nav class="bottom-nav">
+                <a href="#home" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#bride" class="nav-item">
+                    <i class="fas fa-heart"></i>
+                    <span>Mempelai</span>
+                </a>
+                <a href="#wedding-date" class="nav-item">
+                    <i class="fas fa-calendar-day"></i>
+                    <span>Tanggal</span>
+                </a>
+                <a href="#gallery" class="nav-item">
+                    <i class="fas fa-images"></i>
+                    <span>Galeri</span>
+                </a>
+                <a href="#comment" class="nav-item">
+                    <i class="fas fa-comment"></i>
+                    <span>Ucapan</span>
+                </a>
+            </nav>
+
+        </div>
+    </div>
+
+    <!-- ==================== FLOATING BUTTONS ==================== -->
+    <div class="floating-buttons">
+        <button class="floating-btn btn-music" id="btn-music" onclick="toggleMusic()">
+            <i class="fa-solid fa-music"></i>
+        </button>
+        <button class="floating-btn btn-theme" id="btn-theme" onclick="toggleTheme()">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+    </div>
+
+    <!-- ==================== IMAGE MODAL ==================== -->
+    <div class="modal fade" id="imageModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body p-1 position-relative">
+                    <button type="button" class="btn position-absolute top-0 end-0 m-2 rounded-circle"
+                            style="background: var(--primary-color); color: white; width: 40px; height: 40px; z-index: 10;" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <img src="" class="img-modal w-100" id="modal-image" alt="image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            simulateLoading();
+            initCountdown();
+            initAudio();
+            initRSVP();
+            initBottomNav();
+            initComments();
+        });
+
+        // Comments System
+        const sampleComments = [
+            { name: 'Sari Wulandari', message: 'Selamat untuk Maya & Fajar! Semoga menjadi keluarga yang bahagia dan penuh cinta. doa terbaik dari saya.', time: '3 jam lalu' },
+            { name: 'Budi Santoso', message: 'Happy wedding! Semoga dilancarkan prosesinya ya. Sukses selalu untuk keduanya!', time: '6 jam lalu' },
+            { name: 'Rina Maharani', message: 'Semoga menjadi keluarga sakinah mawaddah warahmah. Selamat ya!', time: '1 hari lalu' }
+        ];
+
+        function initComments() {
+            const commentsList = document.getElementById('comments-list');
+            const commentCount = document.getElementById('comment-count');
+
+            let comments = JSON.parse(localStorage.getItem('wedding-comments-template2')) || [];
+
+            if (comments.length === 0) {
+                comments = [...sampleComments];
+                localStorage.setItem('wedding-comments-template2', JSON.stringify(comments));
+            }
+
+            renderComments(comments);
+            updateCommentCount(comments.length);
+        }
+
+        function renderComments(comments) {
+            const commentsList = document.getElementById('comments-list');
+            commentsList.innerHTML = '';
+
+            comments.forEach((comment, index) => {
+                const avatar = comment.name.charAt(0).toUpperCase();
+                const html = `
+                    <div class="comment-card" style="animation: fadeInUp 0.5s ease ${index * 0.1}s both;">
+                        <div class="comment-header">
+                            <div class="comment-avatar">${avatar}</div>
+                            <div>
+                                <div class="comment-name">${escapeHtml(comment.name)}</div>
+                                <div class="comment-time">${comment.time}</div>
+                            </div>
+                        </div>
+                        <div class="comment-text">${escapeHtml(comment.message)}</div>
+                    </div>
+                `;
+                commentsList.innerHTML += html;
+            });
+        }
+
+        function addComment() {
+            const nameInput = document.getElementById('comment-name');
+            const messageInput = document.getElementById('comment-message');
+
+            const name = nameInput.value.trim();
+            const message = messageInput.value.trim();
+
+            if (!name || !message) {
+                alert('Mohon isi nama dan ucapan Anda');
+                return;
+            }
+
+            const newComment = {
+                name: name,
+                message: message,
+                time: 'Baru saja'
+            };
+
+            let comments = JSON.parse(localStorage.getItem('wedding-comments-template2')) || [];
+            comments.unshift(newComment);
+            localStorage.setItem('wedding-comments-template2', JSON.stringify(comments));
+
+            renderComments(comments);
+            updateCommentCount(comments.length);
+
+            nameInput.value = '';
+            messageInput.value = '';
+
+            alert('Terima kasih! Ucapan Anda telah dikirim.');
+        }
+
+        function updateCommentCount(count) {
+            const commentCount = document.getElementById('comment-count');
+            commentCount.textContent = count + ' Ucapan';
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Bottom Navigation Scroll Spy
+        function initBottomNav() {
+            const sections = document.querySelectorAll('section[id]');
+            const navItems = document.querySelectorAll('.nav-item');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-50% 0px -50% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const sectionId = entry.target.getAttribute('id');
+                        navItems.forEach(item => {
+                            item.classList.remove('active');
+                            if (item.getAttribute('href') === '#' + sectionId) {
+                                item.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => observer.observe(section));
+
+            // Smooth scroll for nav items
+            navItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        }
+
+        // Loading Animation
+        function simulateLoading() {
+            var progressBar = document.getElementById('progress-bar');
+            var progressInfo = document.getElementById('progress-info');
+            var loadingPage = document.getElementById('loading');
+            var progress = 0;
+            var messages = ['Memuat gambar...', 'Memuat font...', 'Memuat elemen...', 'Hampir selesai...'];
+
+            var interval = setInterval(function() {
+                progress = progress + Math.random() * 25;
+                if (progress > 100) progress = 100;
+                if (progressBar) progressBar.style.width = progress + '%';
+                if (progressInfo) progressInfo.textContent = messages[Math.min(Math.floor(progress / 25), 3)];
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(function() {
+                        if (loadingPage) {
+                            loadingPage.classList.add('hidden');
+                        }
+                    }, 300);
+                }
+            }, 80);
+        }
+
+        // Countdown Timer
+        function initCountdown() {
+            var target = new Date('2025-12-20 09:00:00').getTime();
+            function update() {
+                var now = Date.now();
+                var d = Math.floor((target - now) / 86400000);
+                var h = Math.floor((target - now) % 86400000 / 3600000);
+                var m = Math.floor((target - now) % 3600000 / 60000);
+                var s = Math.floor((target - now) % 60000 / 1000);
+                var ids = ['days', 'hours', 'minutes', 'seconds'];
+                var vals = [d, h, m, s];
+                ids.forEach(function(id, i) {
+                    var el = document.getElementById(id);
+                    var elHome = document.getElementById(id + '-home');
+                    if (el) el.textContent = String(vals[i]).padStart(2, '0');
+                    if (elHome) elHome.textContent = String(vals[i]).padStart(2, '0');
+                });
+            }
+            update();
+            setInterval(update, 1000);
+        }
+
+        // RSVP Form
+        function initRSVP() {
+            var form = document.getElementById('rsvpForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    var name = document.getElementById('rsvpName').value;
+                    var guests = document.getElementById('rsvpGuests').value;
+                    var presence = document.getElementById('rsvpPresence').value;
+                    alert('Terima kasih ' + name + '! RSVP Anda telah dikirim.\nKehadiran: ' + (presence === 'hadir' ? 'Hadir' : 'Tidak Hadir') + '\nJumlah tamu: ' + guests);
+                });
+            }
+        }
+
+        // Open Invitation
+        function openInvitation() {
+            var welcome = document.getElementById('welcome');
+            var root = document.getElementById('root');
+            if (welcome) welcome.classList.add('hidden');
+            if (root) {
+                root.classList.remove('opacity-0');
+                root.classList.add('content-visible');
+            }
+            triggerConfetti();
+        }
+
+        // Open Modal
+        function openModal(el) {
+            var modal = new bootstrap.Modal(document.getElementById('imageModal'));
+            document.getElementById('modal-image').src = el.src;
+            modal.show();
+        }
+
+        // Audio
+        var audio = null;
+        function initAudio() {
+            var src = document.body.getAttribute('data-audio');
+            if (src) audio = new Audio(src);
+        }
+        function toggleMusic() {
+            if (!audio) {
+                alert('Musik tidak tersedia');
+                return;
+            }
+            if (audio.paused) {
+                audio.play();
+                document.getElementById('btn-music').innerHTML = '<i class="fa-solid fa-pause"></i>';
+            } else {
+                audio.pause();
+                document.getElementById('btn-music').innerHTML = '<i class="fa-solid fa-music"></i>';
+            }
+        }
+
+        // Theme Toggle
+        function toggleTheme() {
+            var html = document.documentElement;
+            var btn = document.getElementById('btn-theme');
+            if (html.getAttribute('data-bs-theme') === 'dark') {
+                html.setAttribute('data-bs-theme', 'light');
+                btn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+                btn.style.background = 'linear-gradient(135deg, var(--primary-color), var(--primary-light))';
+            } else {
+                html.setAttribute('data-bs-theme', 'dark');
+                btn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+                btn.style.background = '#1A1025';
+            }
+        }
+
+        // Copy to Clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Nomor rekening berhasil disalin!');
+            });
+        }
+
+        // Calendar
+        function saveToCalendar() {
+            window.open('https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pernikahan+Rizky+%26+Amanda&dates=20251220/20251220&location=The+Mulia+Resort+Bali', '_blank');
+        }
+
+        // Confetti
+        function triggerConfetti() {
+            var colors = ['#E91E63', '#F8BBD9', '#AD1457', '#FF4081'];
+            var container = document.createElement('div');
+            container.className = 'confetti';
+            document.body.appendChild(container);
+            for (var i = 0; i < 80; i++) {
+                var piece = document.createElement('div');
+                piece.className = 'confetti-piece';
+                var size = Math.random() * 10 + 5;
+                piece.style.cssText = 'width:' + size + 'px;height:' + size + 'px;background:' + colors[Math.floor(Math.random() * colors.length)] + ';left:' + Math.random() * 100 + '%;top:-20px;animation-delay:' + Math.random() + 's;';
+                container.appendChild(piece);
+            }
+            setTimeout(function() {
+                container.remove();
+            }, 4000);
+        }
+    </script>
+    <script src="/templates/js/api-integration.js"></script>
+</body>
+</html>

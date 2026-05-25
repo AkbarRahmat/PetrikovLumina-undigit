@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="id" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Undangan Pernikahan - Aldi & Naura</title>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #C9A961;
+            --primary-light: #E8D5A3;
+            --primary-dark: #A0843D;
+            --light-bg: #F8F6F0;
+            --dark-bg: #1A2332;
+            --dark-secondary: #2C3A52;
+            --navy-accent: #1E3A5F;
+        }
+
+        /* Package Badge - Gold Navy */
+        .package-badge {
+            position: fixed;
+            top: 0.75rem;
+            left: 0.75rem;
+            background: linear-gradient(135deg, #C9A961, #E8D5A3);
+            color: #1A2332;
+            padding: 0.4rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            z-index: 9990;
+            box-shadow: 0 4px 15px rgba(201, 169, 97, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .package-badge i { font-size: 0.7rem; }
+
+        /* ==================== GOLD PACKAGE - NAVY CLASSIC ==================== */
+
+        /* Gold shimmer text */
+        .text-gold { color: var(--primary-color) !important; }
+
+        /* Badge Custom */
+        .badge-custom {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: var(--dark-bg);
+            padding: 0.4rem 1.2rem;
+            border-radius: 2rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* Font Script */
+        .font-script { font-family: 'Great Vibes', cursive; }
+
+        /* Button Primary Custom */
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: var(--dark-bg);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(201, 169, 97, 0.3);
+        }
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(201, 169, 97, 0.4);
+            color: var(--dark-bg);
+        }
+
+        /* Loading Page */
+        .loading-page {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--dark-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s ease;
+        }
+        .loading-page.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Welcome Page */
+        .welcome-page {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--dark-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9998;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .welcome-page.hidden {
+            opacity: 0;
+            transform: scale(0.95);
+            pointer-events: none;
+        }
+
+        /* Wave */
+        .svg-wrapper {
+            position: relative;
+            width: 100%;
+            line-height: 0;
+            margin-top: -1px;
+        }
+        .svg-wrapper svg { display: block; width: 100%; }
+
+        /* Gallery */
+        .gallery-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(201, 169, 97, 0.2);
+        }
+        .gallery-img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Floating nav background */
+        .bg-dark-theme { background: var(--dark-bg); }
+        .bg-light-theme { background: var(--light-bg); }
+
+        /* Countdown */
+        .countdown-number { font-size: 2rem; font-weight: 700; }
+        .countdown-item {
+            background: rgba(201, 169, 97, 0.1);
+            border: 1px solid rgba(201, 169, 97, 0.3);
+            border-radius: 1rem;
+            padding: 0.75rem 1rem;
+            min-width: 70px;
+            text-align: center;
+        }
+
+        /* Image Modal */
+        .img-modal {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            padding-top: 10vh;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(10px);
+        }
+        .img-modal.show { display: block; }
+        .img-modal .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 1rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .img-modal .close-modal {
+            position: absolute;
+            top: 20px; right: 35px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        .img-modal .close-modal:hover { opacity: 1; }
+
+        /* Shimmer effect */
+        .shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmerAnim 3s infinite;
+        }
+        @keyframes shimmerAnim {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(200%); }
+        }
+
+        /* Mouse scroll animation */
+        .mouse-animation {
+            width: 24px; height: 38px;
+            border: 2px solid var(--primary-color);
+            border-radius: 12px;
+            position: relative;
+            opacity: 0.5;
+        }
+        .scroll-animation {
+            width: 4px; height: 10px;
+            background: var(--primary-color);
+            border-radius: 2px;
+            position: absolute;
+            top: 6px; left: 50%;
+            transform: translateX(-50%);
+            animation: scrollMove 2s ease-in-out infinite;
+        }
+        @keyframes scrollMove {
+            0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(15px); }
+        }
+
+        /* Love Story Timeline */
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            padding-bottom: 2rem;
+            border-left: 2px solid rgba(201, 169, 97, 0.3);
+        }
+        .timeline-item::before {
+            content: '♥';
+            position: absolute;
+            left: -0.7rem;
+            top: 0;
+            color: var(--primary-color);
+            font-size: 1rem;
+            background: var(--dark-bg);
+            width: 1.4rem; height: 1.4rem;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .timeline-item:last-child { border-left-color: transparent; }
+
+        /* Comment Section */
+        .comment-card {
+            background: rgba(201, 169, 97, 0.05);
+            border: 1px solid rgba(201, 169, 97, 0.15);
+            border-radius: 1rem;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .comment-card .comment-avatar {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(201, 169, 97, 0.3);
+        }
+        .comment-card .comment-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--primary-color);
+        }
+        .comment-card .comment-date {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.75);
+        }
+        .comment-card .comment-text {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .comment-form .form-control {
+            background: rgba(0,0,0,0.2);
+            border: 1px solid rgba(201, 169, 97, 0.3);
+            border-radius: 0.75rem;
+            color: white;
+            padding: 0.75rem 1rem;
+        }
+        .comment-form .form-control::placeholder { color: rgba(255,255,255,0.75); }
+        .comment-form .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(201, 169, 97, 0.25);
+        }
+        .comment-count { font-size: 0.85rem; color: rgba(255,255,255,0.8); }
+
+        /* Direction Card */
+        .direction-card {
+            background: linear-gradient(135deg, rgba(201, 169, 97, 0.1), rgba(201, 169, 97, 0.05));
+            border: 1px solid rgba(201, 169, 97, 0.3);
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+
+        /* Full height sections */
+        .full-height { min-height: 100vh; }
+        .pb-nav { padding-bottom: 80px; }
+
+        /* Bottom Navigation - Gold */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 65px;
+            background: linear-gradient(180deg, rgba(26,35,50,0.98) 0%, rgba(20,28,45,0.99) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 8px;
+            border-top: 2px solid rgba(201, 169, 97, 0.4);
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3),
+                        inset 0 1px 0 rgba(201, 169, 97, 0.1);
+        }
+        .bottom-nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201, 169, 97, 0.6), transparent);
+        }
+        .bottom-nav .nav-item {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex: 1 !important;
+            min-width: 0 !important;
+            text-decoration: none !important;
+            padding: 6px 4px !important;
+            color: rgba(255,255,255,0.75);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .bottom-nav .nav-item i {
+            font-size: 1.2rem !important;
+            display: block !important;
+            margin-bottom: 3px !important;
+        }
+        .bottom-nav .nav-item span {
+            font-size: 0.6rem !important;
+            font-weight: 500 !important;
+            display: block !important;
+            white-space: nowrap !important;
+            text-align: center !important;
+        }
+        .bottom-nav .nav-item:hover {
+            color: rgba(201, 169, 97, 0.8) !important;
+            transform: translateY(-2px);
+        }
+        .bottom-nav .nav-item.active {
+            color: #C9A961 !important;
+        }
+        .bottom-nav .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background: #C9A961;
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(201, 169, 97, 0.6);
+        }
+
+        /* Gold wave overlay effect */
+        .gold-wave {
+            position: relative;
+        }
+        .gold-wave::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            opacity: 0.3;
+        }
+
+        /* Animation keyframes */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 576px) {
+            .bottom-nav { height: 60px; border-top-width: 1px; }
+            .bottom-nav .nav-item i { font-size: 1.1rem !important; }
+            .bottom-nav .nav-item span { font-size: 0.55rem !important; }
+            .bottom-nav::before { display: none; }
+        }
+        @media (min-width: 576px) {
+            .bottom-nav {
+                left: auto;
+                width: calc(33.333333% - 1rem);
+                right: 0.5rem;
+                bottom: 0.5rem;
+                border-radius: 16px 16px 0 0;
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+                height: 60px;
+            }
+        }
+        @media (min-width: 768px) { .bottom-nav { width: calc(50% - 1rem); } }
+        @media (min-width: 992px) { .bottom-nav { width: calc(33.333333% - 1rem); } }
+    </style>
+</head>
+
+<body data-audio="" data-confetti="true" data-time="2025-12-20 10:00:00" data-template="template-4">
+
+    <!-- Package Badge -->
+    <div class="package-badge">
+        <i class="fas fa-star"></i>
+        <span>PAKET GOLD</span>
+    </div>
+
+    <!-- ==================== LOADING PAGE ==================== -->
+    <div class="loading-page" id="loading">
+        <div class="text-center">
+            <i class="fa-solid fa-heart" style="font-size: 4rem; color: var(--primary-color); margin-bottom: 2rem; animation: heartbeat 1s ease-in-out infinite;"></i>
+            <h2 class="font-script mb-4" style="font-size: 2.5rem; color: var(--primary-color);">Aldi & Naura</h2>
+            <div class="progress mx-auto" style="width: 200px;">
+                <div class="progress-bar" id="progress-bar" style="width: 0%;"></div>
+            </div>
+            <p class="mt-3" style="font-size: 0.85rem; color: rgba(255,255,255,0.8);" id="progress-info">Memuat...</p>
+        </div>
+    </div>
+
+    <!-- ==================== WELCOME PAGE ==================== -->
+    <div class="welcome-page" id="welcome">
+        <div style="position: absolute; top: 15%; left: 10%;">
+            <i class="fa-solid fa-heart text-gold" style="font-size: 2.5rem; opacity: 0.3; animation: float 6s ease-in-out infinite;"></i>
+        </div>
+        <div style="position: absolute; top: 25%; right: 15%;">
+            <i class="fa-solid fa-star text-gold" style="font-size: 1.8rem; opacity: 0.3; animation: float 8s ease-in-out infinite; animation-delay: -2s;"></i>
+        </div>
+        <div style="position: absolute; bottom: 25%; left: 15%;">
+            <i class="fa-solid fa-heart text-gold" style="font-size: 2rem; opacity: 0.3; animation: float 7s ease-in-out infinite; animation-delay: -4s;"></i>
+        </div>
+        <div style="position: absolute; bottom: 20%; right: 20%;">
+            <i class="fa-solid fa-star text-gold" style="font-size: 1.5rem; opacity: 0.3; animation: float 6s ease-in-out infinite; animation-delay: -3s;"></i>
+        </div>
+
+        <div class="text-center p-4" style="position: relative; z-index: 1;">
+            <span class="badge-custom mb-4 d-inline-block">THE WEDDING OF</span>
+
+            <img src="../../images/couple.png"
+                 alt="couple" class="rounded-circle mb-4 shimmer"
+                 style="width: 200px; height: 200px; object-fit: cover; border: 5px solid var(--primary-color); box-shadow: 0 20px 60px rgba(0,0,0,0.4);">
+
+            <h1 class="font-script mb-4" style="font-size: 4rem; color: var(--primary-color); text-shadow: 2px 2px 10px rgba(0,0,0,0.3);">Aldi & Naura</h1>
+
+            <p class="mb-2" style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Kepada Yth.</p>
+            <p class="fw-bold mb-4" style="font-size: 1.2rem; color: white;" id="guest-name">Bapak/Ibu/Saudara/i</p>
+
+            <p class="mb-4" style="font-size: 0.9rem; color: rgba(255,255,255,0.75);">
+                <i class="fa-solid fa-calendar-day me-1"></i>Sabtu, 20 Desember 2025
+            </p>
+
+            <button class="btn-primary-custom btn-lg" id="btn-open" onclick="openInvitation()">
+                <i class="fa-solid fa-envelope-open me-2"></i>Buka Undangan
+            </button>
+        </div>
+    </div>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <div class="row m-0 p-0 opacity-0 pb-nav" id="root">
+
+        <!-- ==================== DESKTOP SIDEBAR ==================== -->
+        <div class="col-sm-5 col-md-6 col-lg-7 col-xl-8 d-none d-sm-block vh-100 sticky-top p-0 bg-dark-theme">
+            <div class="d-flex justify-content-center align-items-center vh-100 position-relative overflow-hidden">
+                <div style="position: absolute; width: 100%; height: 100%; opacity: 0.15;">
+                    <img src="https://picsum.photos/seed/navybg1/800/1200" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="position: absolute; top: 15%; left: 10%;">
+                    <i class="fa-solid fa-anchor text-gold" style="font-size: 2.5rem; opacity: 0.25; animation: float 6s ease-in-out infinite;"></i>
+                </div>
+                <div style="position: absolute; bottom: 30%; left: 15%;">
+                    <i class="fa-solid fa-ship text-gold" style="font-size: 2rem; opacity: 0.25; animation: float 7s ease-in-out infinite; animation-delay: -4s;"></i>
+                </div>
+
+                <div class="text-center p-5" style="position: relative; z-index: 1;">
+                    <span class="badge-custom mb-4 d-inline-block">THE WEDDING OF</span>
+                    <h1 class="font-script mb-4" style="font-size: 4.5rem; color: var(--primary-color); text-shadow: 2px 2px 10px rgba(0,0,0,0.3);">Aldi & Naura</h1>
+                    <img src="../../images/couple.png"
+                         alt="couple" class="rounded-circle mb-4"
+                         style="width: 250px; height: 250px; object-fit: cover; border: 5px solid var(--primary-color); box-shadow: 0 20px 60px rgba(0,0,0,0.4);">
+                    <p style="font-size: 1.1rem; color: white;">
+                        <i class="fa-solid fa-calendar-day me-2"></i>Sabtu, 20 Desember 2025
+                    </p>
+                    <p style="font-size: 0.95rem; color: var(--primary-color); opacity: 0.7;">
+                        <i class="fa-solid fa-map-marker-alt me-1"></i>Hotel Indonesia Kempinski, Jakarta
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== MOBILE CONTENT ==================== -->
+        <div class="col-sm-7 col-md-6 col-lg-5 col-xl-4 m-0 p-0 bg-light-theme">
+
+            <!-- ==================== HOME SECTION ==================== -->
+            <section id="home" class="position-relative overflow-hidden full-height" style="background: linear-gradient(180deg, var(--light-bg) 0%, #E8E4D8 100%);">
+                <div style="position: absolute; width: 100%; height: 100%; opacity: 0.15;">
+                    <img src="https://picsum.photos/seed/navybg2/800/1200" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 150px; background: linear-gradient(180deg, rgba(201,169,97,0.15) 0%, transparent 100%);"></div>
+
+                <div class="position-relative text-center pt-5 pb-4 px-4">
+                    <span class="badge-custom mb-3 d-inline-block">UNDANGAN PERNIKAHAN</span>
+
+                    <div style="position: relative; display: inline-block;">
+                        <img src="../../images/couple.png"
+                             alt="couple" onclick="openModal(this)" class="rounded-circle shimmer"
+                             style="width: 200px; height: 200px; object-fit: cover; border: 5px solid var(--primary-color); box-shadow: 0 15px 40px rgba(0,0,0,0.2); cursor: pointer;">
+                        <i class="fa-solid fa-heart text-gold" style="position: absolute; top: 15px; right: 5px; font-size: 2rem; animation: heartbeat 1s ease-in-out infinite;"></i>
+                    </div>
+
+                    <h1 class="font-script mb-3" style="font-size: 3.5rem; color: var(--primary-dark);">Aldi & Naura</h1>
+
+                    <p style="font-size: 1.1rem; color: #333;">
+                        <i class="fa-solid fa-calendar-day me-2" style="color: var(--primary-color);"></i>
+                        Sabtu, 20 Desember 2025
+                    </p>
+                    <p class="mb-4 px-4" style="font-size: 0.95rem; color: #555;">
+                        <i class="fa-solid fa-map-marker-alt me-1" style="color: var(--primary-color);"></i>
+                        Hotel Indonesia Kempinski, Jakarta
+                    </p>
+
+                    <!-- Mini Countdown -->
+                    <div class="d-flex justify-content-center gap-2 mb-4 flex-wrap">
+                        <div class="countdown-item">
+                            <span class="d-block countdown-number text-gold" id="days-home">00</span>
+                            <span style="font-size: 0.65rem; color: rgba(0,0,0,0.6);">Hari</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="d-block countdown-number text-gold" id="hours-home">00</span>
+                            <span style="font-size: 0.65rem; color: rgba(0,0,0,0.6);">Jam</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="d-block countdown-number text-gold" id="minutes-home">00</span>
+                            <span style="font-size: 0.65rem; color: rgba(0,0,0,0.6);">Menit</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="d-block countdown-number text-gold" id="seconds-home">00</span>
+                            <span style="font-size: 0.65rem; color: rgba(0,0,0,0.6);">Detik</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-primary-custom mb-4" onclick="saveToCalendar()">
+                        <i class="fa-solid fa-calendar-plus me-2"></i>Save to Calendar
+                    </button>
+
+                    <!-- Scroll Indicator -->
+                    <div class="d-flex flex-column align-items-center mt-5">
+                        <p style="font-size: 0.75rem; color: #666;">Scroll Down</p>
+                        <div class="mouse-animation">
+                            <div class="scroll-animation"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wave -->
+                <div class="svg-wrapper">
+                    <svg viewBox="0 0 1440 320"><path fill="#1A2332" d="M0,160L48,144C96,128,192,96,288,106.7C384,117,480,171,576,165.3C672,160,768,96,864,96C960,96,1056,160,1152,154.7C1248,149,1344,75,1392,37.3L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+                </div>
+            </section>
+
+            <!-- ==================== MEMPELAI SECTION ==================== -->
+            <section id="bride" class="py-5 bg-dark-theme">
+                <div class="container text-center px-4">
+                    <span class="badge-custom mb-4 d-inline-block">MOMENT BAHAGIA</span>
+                    <h2 class="font-script mb-4" style="font-size: 2.5rem; color: var(--primary-color);">Assalamualaikum</h2>
+                    <p class="mb-5" style="font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.8;">
+                        Dengan memohon ridho Allah SWT dan segenap kerendahan hati,<br>
+                        kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara pernikahan kami:
+                    </p>
+
+                    <div class="mb-5">
+                        <div style="position: relative; display: inline-block;">
+                            <img src="../../images/pengantin-pria.png"
+                                 alt="groom" onclick="openModal(this)" class="rounded-circle"
+                                 style="width: 160px; height: 160px; object-fit: cover; border: 4px solid var(--primary-color); cursor: pointer;">
+                            <i class="fa-solid fa-heart text-gold" style="position: absolute; top: -5px; right: -5px; font-size: 1.5rem; animation: heartbeat 1s ease-in-out infinite;"></i>
+                        </div>
+                        <h3 class="font-script mt-3 mb-2" style="font-size: 2.25rem; color: var(--primary-color);">Aldi Pratama</h3>
+                        <p style="font-size: 1rem; color: white;">Putra pertama dari</p>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Bapak Hendra Pratama</p>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">dan</p>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Ibu Rina Pratama</p>
+                    </div>
+
+                    <h2 style="font-size: 4rem; color: var(--primary-color);">&</h2>
+
+                    <div>
+                        <div style="position: relative; display: inline-block;">
+                            <img src="../../images/pengantin-wanita.png"
+                                 alt="bride" onclick="openModal(this)" class="rounded-circle"
+                                 style="width: 160px; height: 160px; object-fit: cover; border: 4px solid var(--primary-color); cursor: pointer;">
+                            <i class="fa-solid fa-heart text-gold" style="position: absolute; top: -5px; right: -5px; font-size: 1.5rem; animation: heartbeat 1s ease-in-out infinite;"></i>
+                        </div>
+                        <h3 class="font-script mt-3 mb-2" style="font-size: 2.25rem; color: var(--primary-color);">Naura Azzahra</h3>
+                        <p style="font-size: 1rem; color: white;">Putri pertama dari</p>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Bapak Dr. Ahmad Azzahra</p>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">dan</p>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Ibu Siti Azzahra</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== LOVE STORY TIMELINE ==================== -->
+            <section id="story" class="py-5 bg-dark-theme" style="border-top: 1px solid rgba(201,169,97,0.15);">
+                <div class="container px-4">
+                    <span class="badge-custom mb-4 d-inline-block">LOVE STORY</span>
+                    <h2 class="font-script mb-5 text-center" style="font-size: 2.5rem; color: var(--primary-color);">Perjalanan Cinta Kami</h2>
+
+                    <div class="timeline-item mb-1 animate-on-scroll">
+                        <h5 class="text-gold fw-bold" style="font-size: 0.85rem;">Pertama Bertemu</h5>
+                        <p style="font-size: 0.75rem; color: rgba(255,255,255,0.75);">Januari 2019</p>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">Berawal dari acara seminar di kampus, kami dipertemukan dalam satu kelompok diskusi.</p>
+                    </div>
+
+                    <div class="timeline-item mb-1 animate-on-scroll">
+                        <h5 class="text-gold fw-bold" style="font-size: 0.85rem;">Mulai Dekat</h5>
+                        <p style="font-size: 0.75rem; color: rgba(255,255,255,0.75);">Maret 2020</p>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">Sering mengerjakan tugas bersama dan saling mendukung satu sama lain.</p>
+                    </div>
+
+                    <div class="timeline-item mb-1 animate-on-scroll">
+                        <h5 class="text-gold fw-bold" style="font-size: 0.85rem;">Lamaran</h5>
+                        <p style="font-size: 0.75rem; color: rgba(255,255,255,0.75);">Juni 2023</p>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">Dengan restu kedua orang tua, kami resmi bertunangan di hadapan keluarga besar.</p>
+                    </div>
+
+                    <div class="timeline-item animate-on-scroll">
+                        <h5 class="text-gold fw-bold" style="font-size: 0.85rem;">Pernikahan</h5>
+                        <p style="font-size: 0.75rem; color: rgba(255,255,255,0.75);">Desember 2025</p>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">Hari yang kami nantikan akhirnya tiba. Kami mengundang Anda untuk menjadi saksi bahagia.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== EVENTS SECTION ==================== -->
+            <section id="events" class="py-5 bg-dark-theme" style="border-top: 1px solid rgba(201,169,97,0.15);">
+                <div class="container text-center px-4">
+                    <span class="badge-custom mb-4 d-inline-block">ACARA</span>
+                    <h2 class="font-script mb-5" style="font-size: 2.5rem; color: var(--primary-color);">Rangkaian Acara</h2>
+
+                    <!-- Akad -->
+                    <div class="direction-card mb-4 text-start animate-on-scroll">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <h5 class="text-gold fw-bold mb-0"><i class="fa-solid fa-ring me-2"></i>Akad Nikah</h5>
+                            <span class="badge-custom" style="font-size: 0.55rem;">08:00 - 10:00</span>
+                        </div>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-bottom: 0.3rem;">
+                            <i class="fa-solid fa-calendar-day me-1 text-gold"></i>
+                            Sabtu, 20 Desember 2025
+                        </p>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">
+                            <i class="fa-solid fa-map-marker-alt me-1 text-gold"></i>
+                            Hotel Indonesia Kempinski, Jakarta
+                        </p>
+                        <a href="https://maps.google.com/?q=Hotel+Indonesia+Kempinski+Jakarta" target="_blank" class="btn btn-primary-custom btn-sm mt-2">
+                            <i class="fa-solid fa-location-dot me-1"></i>Lihat Lokasi
+                        </a>
+                    </div>
+
+                    <!-- Resepsi -->
+                    <div class="direction-card text-start animate-on-scroll">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <h5 class="text-gold fw-bold mb-0"><i class="fa-solid fa-champagne-glasses me-2"></i>Resepsi</h5>
+                            <span class="badge-custom" style="font-size: 0.55rem;">11:00 - 16:00</span>
+                        </div>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-bottom: 0.3rem;">
+                            <i class="fa-solid fa-calendar-day me-1 text-gold"></i>
+                            Sabtu, 20 Desember 2025
+                        </p>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">
+                            <i class="fa-solid fa-map-marker-alt me-1 text-gold"></i>
+                            Hotel Indonesia Kempinski, Jakarta
+                        </p>
+                        <a href="https://maps.google.com/?q=Hotel+Indonesia+Kempinski+Jakarta" target="_blank" class="btn btn-primary-custom btn-sm mt-2">
+                            <i class="fa-solid fa-location-dot me-1"></i>Lihat Lokasi
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== GALLERY ==================== -->
+            <section id="gallery" class="py-5 bg-dark-theme" style="border-top: 1px solid rgba(201,169,97,0.15);">
+                <div class="container px-4">
+                    <span class="badge-custom mb-4 d-inline-block">GALLERY</span>
+                    <h2 class="font-script mb-5 text-center" style="font-size: 2.5rem; color: var(--primary-color);">Momen Bersama</h2>
+                    <div class="row g-2">
+                        <div class="col-6"><img src="https://picsum.photos/seed/navygal1/400/600" class="gallery-img" onclick="openModal(this)" alt="Gallery 1"></div>
+                        <div class="col-6"><img src="https://picsum.photos/seed/navygal2/400/600" class="gallery-img" onclick="openModal(this)" alt="Gallery 2"></div>
+                        <div class="col-6"><img src="https://picsum.photos/seed/navygal3/400/600" class="gallery-img" onclick="openModal(this)" alt="Gallery 3"></div>
+                        <div class="col-6"><img src="https://picsum.photos/seed/navygal4/400/600" class="gallery-img" onclick="openModal(this)" alt="Gallery 4"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== COMMENTS ==================== -->
+            <section id="comments" class="py-5 bg-dark-theme" style="border-top: 1px solid rgba(201,169,97,0.15);">
+                <div class="container px-4">
+                    <span class="badge-custom mb-4 d-inline-block">UCAPAN</span>
+                    <h2 class="font-script mb-4 text-center" style="font-size: 2.5rem; color: var(--primary-color);">Doa & Harapan</h2>
+
+                    <!-- Comment Form -->
+                    <form class="comment-form mb-4" onsubmit="event.preventDefault(); addComment();">
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="comment-name" placeholder="Nama Anda" required>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="comment-city" placeholder="Kota Asal">
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control" id="comment-text" rows="3" placeholder="Tulis ucapan dan doa..." required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary-custom w-100">
+                                    <i class="fa-solid fa-paper-plane me-2"></i>Kirim Ucapan
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="comment-count"><i class="fa-regular fa-heart me-1"></i><span id="comment-count">0</span> Ucapan</span>
+                    </div>
+                    <div id="comment-list"></div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- ==================== BOTTOM NAVIGATION ==================== -->
+    <nav class="bottom-nav" id="bottom-nav">
+        <a class="nav-item active" href="#home">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+        <a class="nav-item" href="#bride">
+            <i class="fa-solid fa-heart"></i>
+            <span>Mempelai</span>
+        </a>
+        <a class="nav-item" href="#events">
+            <i class="fa-solid fa-calendar"></i>
+            <span>Acara</span>
+        </a>
+        <a class="nav-item" href="#gallery">
+            <i class="fa-solid fa-images"></i>
+            <span>Galeri</span>
+        </a>
+        <a class="nav-item" href="#comments">
+            <i class="fa-solid fa-comment"></i>
+            <span>Ucapan</span>
+        </a>
+    </nav>
+
+    <!-- ==================== IMAGE MODAL ==================== -->
+    <div class="img-modal" id="imgModal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // ==================== LOADING SCREEN ====================
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += Math.floor(Math.random() * 15) + 5;
+            if (progress > 100) progress = 100;
+            document.getElementById('progress-bar').style.width = progress + '%';
+            document.getElementById('progress-info').textContent = 'Memuat... ' + progress + '%';
+            if (progress >= 100) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    document.getElementById('loading').classList.add('hidden');
+                }, 500);
+            }
+        }, 300);
+
+        // ==================== OPEN INVITATION ====================
+        function openInvitation() {
+            document.getElementById('welcome').classList.add('hidden');
+            document.getElementById('root').classList.remove('opacity-0');
+            document.getElementById('root').classList.add('opacity-100');
+            // Start confetti
+            if (typeof confetti !== 'undefined') {
+                const duration = 3000;
+                const end = Date.now() + duration;
+                (function frame() {
+                    confetti({ particleCount: 3, angle: 60, spread: 55, origin: { x: 0 } });
+                    confetti({ particleCount: 3, angle: 120, spread: 55, origin: { x: 1 } });
+                    if (Date.now() < end) requestAnimationFrame(frame);
+                })();
+            }
+            // Trigger guest name from URL
+            const params = new URLSearchParams(window.location.search);
+            const guest = params.get('to') || 'Bapak/Ibu/Saudara/i';
+            document.getElementById('guest-name').textContent = decodeURIComponent(guest);
+        }
+
+        // ==================== COUNTDOWN ====================
+        function updateCountdown() {
+            const targetDate = new Date('2025-12-20T10:00:00').getTime();
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                ['days', 'hours', 'minutes', 'seconds'].forEach(id => {
+                    document.getElementById(id + '-home').textContent =
+                        String(eval(id)).padStart(2, '0');
+                });
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // ==================== SAVE TO CALENDAR ====================
+        function saveToCalendar() {
+            const event = {
+                title: 'Pernikahan Aldi & Naura',
+                description: 'Pernikahan Aldi Pratama & Naura Azzahra',
+                location: 'Hotel Indonesia Kempinski, Jakarta',
+                start: '20251220T020000Z',
+                end: '20251220T090000Z'
+            };
+            const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${event.start}/${event.end}&details=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.location)}`;
+            window.open(url, '_blank');
+        }
+
+        // ==================== IMAGE MODAL ====================
+        function openModal(img) {
+            document.getElementById('modalImage').src = img.src;
+            document.getElementById('imgModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+            document.getElementById('imgModal').classList.remove('show');
+            document.body.style.overflow = '';
+        }
+        document.getElementById('imgModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // ==================== COMMENTS ====================
+        let comments = [];
+        function addComment() {
+            const name = document.getElementById('comment-name').value.trim();
+            const city = document.getElementById('comment-city').value.trim();
+            const text = document.getElementById('comment-text').value.trim();
+            if (!name || !text) return;
+
+            comments.unshift({
+                name,
+                city,
+                text,
+                date: new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }),
+                avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=C9A961&color=1A2332&bold=true`
+            });
+            renderComments();
+            document.getElementById('comment-name').value = '';
+            document.getElementById('comment-city').value = '';
+            document.getElementById('comment-text').value = '';
+        }
+        function renderComments() {
+            const container = document.getElementById('comment-list');
+            document.getElementById('comment-count').textContent = comments.length;
+            container.innerHTML = comments.map(c => `
+                <div class="comment-card">
+                    <div class="d-flex align-items-center mb-2">
+                        <img src="${c.avatar}" class="comment-avatar me-2" alt="${c.name}">
+                        <div>
+                            <div class="comment-name">${c.name} ${c.city ? '• ' + c.city : ''}</div>
+                            <div class="comment-date">${c.date}</div>
+                        </div>
+                    </div>
+                    <div class="comment-text">${c.text}</div>
+                </div>
+            `).join('');
+        }
+
+        // ==================== ACTIVE NAVIGATION ====================
+        const navItems = document.querySelectorAll('.bottom-nav .nav-item');
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const top = section.offsetTop - 100;
+                if (window.scrollY >= top) current = section.getAttribute('id');
+            });
+            navItems.forEach(item => {
+                item.classList.toggle('active', item.getAttribute('href') === '#' + current);
+            });
+        });
+
+        // ==================== ANIMATE ON SCROLL ====================
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        // ==================== CONFETTI (CDN) ====================
+        // Load confetti library
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1';
+        document.head.appendChild(script);
+
+        // ==================== INITIAL GUEST NAME ====================
+        const params = new URLSearchParams(window.location.search);
+        const guest = params.get('to') || 'Bapak/Ibu/Saudara/i';
+        document.getElementById('guest-name').textContent = decodeURIComponent(guest);
+    </script>
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/templates/js/api-integration.js"></script>
+</body>
+</html>

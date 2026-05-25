@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Multi Events - Platinum Invitation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --multi-gold: #D4A843;
+            --multi-rose: #E8A0BF;
+            --multi-emerald: #50C878;
+            --multi-sapphire: #4169E1;
+            --multi-dark: #07080C;
+            --multi-card: #0F1117;
+            --multi-border: #1E2030;
+            --multi-text: #C8C8D0;
+            --multi-gradient: linear-gradient(135deg, #D4A843, #E8A0BF);
+            --multi-grad-emerald: linear-gradient(135deg, #50C878, #2ECC71);
+            --multi-grad-sapphire: linear-gradient(135deg, #4169E1, #6A5ACD);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--multi-dark);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .package-badge {
+            position: fixed; top: 0.75rem; left: 50%; transform: translateX(-50%);
+            z-index: 9999; background: rgba(7,8,12,0.85); backdrop-filter: blur(10px);
+            border: 1px solid rgba(212,168,67,0.3); color: var(--multi-gold);
+            padding: 0.3rem 1.2rem; border-radius: 2rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 3px;
+        }
+        .btn-back {
+            position: fixed; top: 0.75rem; left: 0.75rem; z-index: 9999;
+            background: rgba(7,8,12,0.85); backdrop-filter: blur(10px);
+            border: 1px solid rgba(212,168,67,0.3); color: var(--multi-gold);
+            padding: 0.4rem 1rem; border-radius: 2rem; font-size: 0.75rem; text-decoration: none;
+        }
+        .btn-back:hover { background: rgba(212,168,67,0.15); color: #fff; }
+        .watermark {
+            position: fixed; bottom: 4.5rem; left: 50%; transform: translateX(-50%);
+            z-index: 9990; background: rgba(7,8,12,0.6); backdrop-filter: blur(4px);
+            border: 1px solid rgba(212,168,67,0.15); color: var(--multi-gold);
+            padding: 0.2rem 1rem; border-radius: 2rem; font-size: 0.55rem; letter-spacing: 2px; opacity: 0.7;
+        }
+        .navbar-multi {
+            position: fixed; bottom: 1rem; left: 50%; transform: translateX(-50%);
+            z-index: 9998; background: rgba(7,8,12,0.92); backdrop-filter: blur(15px);
+            border: 1px solid rgba(212,168,67,0.2); border-radius: 3rem; padding: 0.6rem 1.4rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+        }
+        .navbar-multi .nav-link { color: rgba(255,255,255,0.75); font-size: 0.7rem; padding: 0.45rem 0.85rem; border-radius: 2rem; transition: all 0.3s; text-align: center; text-decoration: none; }
+        .navbar-multi .nav-link i { display: block; margin: 0 auto 0.2rem; font-size: 1rem; }
+        .navbar-multi .nav-link:hover, .navbar-multi .nav-link.active { color: var(--multi-gold); background: rgba(212,168,67,0.1); }
+        /* HERO */
+        .hero-section {
+            min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center;
+            background: linear-gradient(160deg, #07080C 0%, #0F0A1E 30%, #0A0F18 60%, #07080C 100%);
+            position: relative; overflow: hidden;
+        }
+        .hero-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at center, rgba(212,168,67,0.05) 0%, transparent 70%); }
+        .hero-particles {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(circle at 20% 50%, rgba(212,168,67,0.05) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 20%, rgba(232,160,191,0.05) 0%, transparent 50%),
+                              radial-gradient(circle at 50% 80%, rgba(80,200,120,0.04) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .hero-content { position: relative; z-index: 2; }
+        .hero-badge { display: inline-block; background: var(--multi-gradient); color: var(--multi-dark); padding: 0.3rem 1.5rem; border-radius: 2rem; font-size: 0.65rem; font-weight: 700; letter-spacing: 3px; margin-bottom: 1.2rem; }
+        .hero-subtitle { font-family: 'Great Vibes', cursive; font-size: 2rem; color: var(--multi-gold); margin-bottom: 0.3rem; }
+        .hero-title { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; margin-bottom: 0.3rem; }
+        .hero-title .multi { background: var(--multi-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero-tagline { font-size: 0.9rem; color: var(--multi-text); margin-bottom: 0.5rem; }
+        .hero-date { font-size: 1rem; color: var(--multi-gold); letter-spacing: 4px; font-weight: 600; }
+        /* SECTIONS */
+        .section-multi { padding: 5rem 0; position: relative; }
+        .section-multi:nth-child(odd) { background: rgba(255,255,255,0.012); }
+        .section-tag { display: inline-block; background: rgba(212,168,67,0.1); color: var(--multi-gold); padding: 0.2rem 1rem; border-radius: 2rem; font-size: 0.7rem; letter-spacing: 2px; margin-bottom: 0.5rem; border: 1px solid rgba(212,168,67,0.15); }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .section-title .multi { background: var(--multi-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        /* COUPLE */
+        .bride-card { text-align: center; padding: 2.5rem 1.5rem; background: var(--multi-card); border-radius: 1.5rem; border: 1px solid var(--multi-border); transition: all 0.3s; }
+        .bride-card:hover { border-color: rgba(212,168,67,0.3); transform: translateY(-5px); }
+        .bride-photo { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 3px solid var(--multi-gold); padding: 3px; margin-bottom: 1rem; }
+        .bride-name { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--multi-gold); }
+        .bride-parents { font-size: 0.9rem; color: var(--multi-text); }
+        /* MULTI EVENTS - Timelines */
+        .event-festive { background: var(--multi-card); border: 1px solid var(--multi-border); border-radius: 1.5rem; padding: 1.5rem; margin-bottom: 1.5rem; transition: all 0.3s; }
+        .event-festive:hover { border-color: var(--multi-gold); }
+        .event-festive .event-date-badge { display: inline-block; padding: 0.2rem 0.8rem; border-radius: 1rem; font-size: 0.7rem; font-weight: 700; margin-bottom: 1rem; }
+        .event-festive.event-akad .event-date-badge { background: rgba(212,168,67,0.2); color: var(--multi-gold); }
+        .event-festive.event-resepsi .event-date-badge { background: rgba(232,160,191,0.2); color: var(--multi-rose); }
+        .event-festive.event-syukuran .event-date-badge { background: rgba(80,200,120,0.2); color: var(--multi-emerald); }
+        .event-festive.event-reunion .event-date-badge { background: rgba(65,105,225,0.2); color: var(--multi-sapphire); }
+        .event-festive .event-icon-circle {
+            width: 50px; height: 50px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1rem; font-size: 1.3rem; color: #fff;
+        }
+        .event-akad .event-icon-circle { background: var(--multi-gradient); }
+        .event-resepsi .event-icon-circle { background: linear-gradient(135deg, #E8A0BF, #D46A9E); }
+        .event-syukuran .event-icon-circle { background: var(--multi-grad-emerald); }
+        .event-reunion .event-icon-circle { background: var(--multi-grad-sapphire); }
+        .event-festive .event-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; }
+        .event-festive .event-time { font-size: 0.9rem; color: var(--multi-text); }
+        .event-festive .event-location { font-size: 0.8rem; color: rgba(255,255,255,0.75); }
+        /* FAMILY PHOTOS */
+        .family-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+        .family-item { border-radius: 1rem; overflow: hidden; aspect-ratio: 1; cursor: pointer; position: relative; border: 1px solid var(--multi-border); }
+        .family-item img { width: 100%; height: 100%; object-fit: cover; transition: all 0.5s; }
+        .family-item:hover img { transform: scale(1.1); }
+        .family-item .family-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 0.5rem; background: linear-gradient(transparent, rgba(0,0,0,0.85)); color: #fff; font-size: 0.7rem; text-align: center; }
+        /* GALLERY */
+        .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+        .gallery-item { border-radius: 1rem; overflow: hidden; cursor: pointer; position: relative; aspect-ratio: 3/4; border: 1px solid var(--multi-border); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: all 0.5s; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-item .gallery-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 0.5rem; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: #fff; font-size: 0.75rem; opacity: 0; transition: all 0.3s; }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        /* FORM */
+        .form-control-multi { background: rgba(255,255,255,0.03); border: 1px solid var(--multi-border); color: #fff; border-radius: 1rem; padding: 0.75rem 1rem; }
+        .form-control-multi:focus { background: rgba(255,255,255,0.05); border-color: var(--multi-gold); box-shadow: 0 0 0 2px rgba(212,168,67,0.1); color: #fff; }
+        .form-control-multi::placeholder { color: rgba(255,255,255,0.75); }
+        .btn-multi { background: var(--multi-gradient); color: var(--multi-dark); border: none; border-radius: 2rem; padding: 0.75rem 2rem; font-weight: 700; transition: all 0.3s; background-size: 200% auto; }
+        .btn-multi:hover { background-position: right center; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(212,168,67,0.3); color: var(--multi-dark); }
+        .comment-card { background: var(--multi-card); border: 1px solid var(--multi-border); border-radius: 1rem; padding: 1rem; margin-bottom: 0.75rem; }
+        .comment-name { font-weight: 700; color: var(--multi-rose); font-size: 0.9rem; }
+        .comment-text { color: var(--multi-text); font-size: 0.85rem; margin-top: 0.25rem; }
+        .comment-time { font-size: 0.7rem; color: rgba(255,255,255,0.75); }
+        .audio-player-fixed { position: fixed; top: 0.75rem; right: 0.75rem; z-index: 9990; }
+        .btn-audio { width: 40px; height: 40px; border-radius: 50%; background: rgba(212,168,67,0.15); border: 1px solid rgba(212,168,67,0.3); color: var(--multi-gold); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; }
+        .btn-audio:hover { background: rgba(212,168,67,0.25); transform: scale(1.1); }
+        .btn-audio.playing { animation: pulseMulti 1.5s infinite; }
+        @keyframes pulseMulti { 0%,100%{box-shadow:0 0 0 0 rgba(212,168,67,0.4);}50%{box-shadow:0 0 0 10px rgba(212,168,67,0);} }
+        /* FAMILY SECTION */
+        .family-header { text-align: center; margin-bottom: 2rem; }
+        .family-header h2 { font-family: 'Playfair Display', serif; }
+        .family-header .family-sub { color: var(--multi-text); font-size: 0.9rem; }
+        @media (max-width:767px) {
+            .hero-title { font-size: 2.8rem; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .family-grid { grid-template-columns: repeat(2, 1fr); }
+            .navbar-multi .nav-link { font-size: 0.6rem; padding: 0.3rem 0.45rem; }
+            .navbar-multi .nav-link i { font-size: 0.85rem; }
+            .section-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body data-template="template-15">
+    <div class="package-badge"><i class="fa-solid fa-calendar-week me-2"></i>PLATINUM - MULTI EVENTS</div>
+    <a href="../../" class="btn-back"><i class="fa-solid fa-arrow-left me-2"></i>Kembali</a>
+    <div class="watermark"><i class="fa-regular fa-heart me-1"></i> Petrikov Lumina</div>
+    <div class="audio-player-fixed"><button class="btn-audio" id="btnAudio" onclick="toggleAudio()"><i class="fa-solid fa-music"></i></button></div>
+
+    <nav class="navbar-multi" id="navbarMulti">
+        <div class="d-flex gap-1">
+            <a class="nav-link active" href="#home"><i class="fa-solid fa-house"></i>Home</a>
+            <a class="nav-link" href="#couple"><i class="fa-solid fa-heart"></i>Pasangan</a>
+            <a class="nav-link" href="#events"><i class="fa-solid fa-calendar"></i>Acara</a>
+            <a class="nav-link" href="#family"><i class="fa-solid fa-users"></i>Keluarga</a>
+            <a class="nav-link" href="#gallery"><i class="fa-solid fa-images"></i>Galeri</a>
+            <a class="nav-link" href="#wishes"><i class="fa-solid fa-comment"></i>Ucapan</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero-section" id="home">
+        <div class="hero-particles"></div>
+        <div class="hero-content">
+            <div data-aos="fade-down"><span class="hero-badge"><i class="fa-solid fa-star me-2"></i>MULTI CELEBRATION</span></div>
+            <div data-aos="fade-up" data-aos-delay="200">
+                <p class="hero-subtitle">Celebrating Love & Family</p>
+                <h1 class="hero-title">Bagas & <span class="multi">Karina</span></h1>
+                <p class="hero-tagline">✦ Bersama Keluarga Besar ✦</p>
+                <p class="hero-date">Rangkaian Acara — Juni s.d. Juli 2027</p>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="400" class="mt-4">
+                <a href="#events" class="btn btn-multi"><i class="fa-solid fa-calendar me-2"></i>Lihat Acara</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section style="padding:2.5rem 0;border-top:1px solid var(--multi-border);border-bottom:1px solid var(--multi-border);">
+        <div class="container">
+            <div class="row justify-content-center" data-aos="fade-up">
+                <div class="col-12 text-center mb-3"><span class="section-tag">Menuju Acara Utama</span></div>
+                <div class="col-2 text-center"><div style="font-size:3rem;font-weight:700;color:var(--multi-gold);line-height:1;" id="days">00</div><div style="font-size:0.7rem;color:var(--multi-text);letter-spacing:2px;">Hari</div></div>
+                <div class="col-1 text-center" style="font-size:2rem;color:var(--multi-gold);opacity:0.3;">:</div>
+                <div class="col-2 text-center"><div style="font-size:3rem;font-weight:700;color:var(--multi-gold);line-height:1;" id="hours">00</div><div style="font-size:0.7rem;color:var(--multi-text);letter-spacing:2px;">Jam</div></div>
+                <div class="col-1 text-center" style="font-size:2rem;color:var(--multi-gold);opacity:0.3;">:</div>
+                <div class="col-2 text-center"><div style="font-size:3rem;font-weight:700;color:var(--multi-gold);line-height:1;" id="minutes">00</div><div style="font-size:0.7rem;color:var(--multi-text);letter-spacing:2px;">Menit</div></div>
+                <div class="col-1 text-center" style="font-size:2rem;color:var(--multi-gold);opacity:0.3;">:</div>
+                <div class="col-2 text-center"><div style="font-size:3rem;font-weight:700;color:var(--multi-gold);line-height:1;" id="seconds">00</div><div style="font-size:0.7rem;color:var(--multi-text);letter-spacing:2px;">Detik</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COUPLE -->
+    <section class="section-multi" id="couple">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="section-tag"><i class="fa-solid fa-heart me-2"></i>MEMPELAI</span>
+                <h2 class="section-title">Kedua <span class="multi">Mempelai</span></h2>
+                <p class="text-muted">Bersama keluarga besar, kami mengundang</p>
+            </div>
+            <div class="row justify-content-center g-4">
+                <div class="col-md-5" data-aos="fade-right">
+                    <div class="bride-card">
+                        <img src="../../images/pengantin-pria.png" alt="Bagas" class="bride-photo">
+                        <h3 class="bride-name">Bagas Wicaksono</h3>
+                        <p class="bride-parents">Putra pertama dari<br>Bapak Sugeng & Ibu Rini</p>
+                    </div>
+                </div>
+                <div class="col-md-1 d-flex align-items-center justify-content-center" data-aos="zoom-in"><div style="font-size:3rem;color:var(--multi-gold);font-family:'Great Vibes',cursive;">&</div></div>
+                <div class="col-md-5" data-aos="fade-left">
+                    <div class="bride-card">
+                        <img src="../../images/pengantin-wanita.png" alt="Karina" class="bride-photo">
+                        <h3 class="bride-name">Karina Dewi</h3>
+                        <p class="bride-parents">Putri pertama dari<br>Bapak Hendra & Ibu Sari</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MULTI EVENTS -->
+    <section class="section-multi" id="events">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="section-tag"><i class="fa-solid fa-calendar-check me-2"></i>RANGKAIAN ACARA</span>
+                <h2 class="section-title">Multi <span class="multi">Celebration</span></h2>
+                <p class="text-muted">Berbagai acara meriah bersama keluarga besar</p>
+            </div>
+            <div class="row justify-content-center g-4">
+                <div class="col-md-6" data-aos="flip-up">
+                    <div class="event-festive event-syukuran">
+                        <div class="text-center">
+                            <div class="event-icon-circle"><i class="fa-solid fa-hands-praying"></i></div>
+                            <span class="event-date-badge"><i class="fa-regular fa-calendar me-1"></i>Minggu, 6 Juni 2027</span>
+                            <div class="event-name">Syukuran & Doa Bersama</div>
+                            <div class="event-time mt-2">10:00 - 14:00 WIB</div>
+                            <hr style="border-color:var(--multi-border);margin:0.75rem 0;">
+                            <div class="event-location"><i class="fa-solid fa-location-dot me-1"></i>Kediaman Keluarga Besar<br>Jl. Gotong Royong No.45, Solo</div>
+                            <a href="https://maps.google.com/?q=Solo" target="_blank" class="btn btn-sm btn-outline-light mt-3 rounded-pill"><i class="fa-solid fa-map-pin me-1"></i>Lihat Lokasi</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="flip-up" data-aos-delay="100">
+                    <div class="event-festive event-akad">
+                        <div class="text-center">
+                            <div class="event-icon-circle"><i class="fa-solid fa-ring"></i></div>
+                            <span class="event-date-badge"><i class="fa-regular fa-calendar me-1"></i>Sabtu, 19 Juni 2027</span>
+                            <div class="event-name">Akad Nikah</div>
+                            <div class="event-time mt-2">08:00 - 10:00 WIB</div>
+                            <hr style="border-color:var(--multi-border);margin:0.75rem 0;">
+                            <div class="event-location"><i class="fa-solid fa-location-dot me-1"></i>Masjid Agung Al-Multazam<br>Jl. Masjid No.1, Solo</div>
+                            <a href="https://maps.google.com/?q=Solo" target="_blank" class="btn btn-sm btn-outline-light mt-3 rounded-pill"><i class="fa-solid fa-map-pin me-1"></i>Lihat Lokasi</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="flip-up" data-aos-delay="200">
+                    <div class="event-festive event-resepsi">
+                        <div class="text-center">
+                            <div class="event-icon-circle"><i class="fa-solid fa-champagne-glasses"></i></div>
+                            <span class="event-date-badge"><i class="fa-regular fa-calendar me-1"></i>Sabtu, 19 Juni 2027</span>
+                            <div class="event-name">Resepsi</div>
+                            <div class="event-time mt-2">11:00 - 17:00 WIB</div>
+                            <hr style="border-color:var(--multi-border);margin:0.75rem 0;">
+                            <div class="event-location"><i class="fa-solid fa-location-dot me-1"></i>Gedung Serbaguna Multazam<br>Jl. Masjid No.1, Solo</div>
+                            <a href="https://maps.google.com/?q=Solo" target="_blank" class="btn btn-sm btn-outline-light mt-3 rounded-pill"><i class="fa-solid fa-map-pin me-1"></i>Lihat Lokasi</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="flip-up" data-aos-delay="300">
+                    <div class="event-festive event-reunion">
+                        <div class="text-center">
+                            <div class="event-icon-circle"><i class="fa-solid fa-people-group"></i></div>
+                            <span class="event-date-badge"><i class="fa-regular fa-calendar me-1"></i>Minggu, 4 Juli 2027</span>
+                            <div class="event-name">Halal Bihalal & Reuni</div>
+                            <div class="event-time mt-2">09:00 - 15:00 WIB</div>
+                            <hr style="border-color:var(--multi-border);margin:0.75rem 0;">
+                            <div class="event-location"><i class="fa-solid fa-location-dot me-1"></i>Taman Budaya Solo<br>Jl. Kebudayaan No.10, Solo</div>
+                            <a href="https://maps.google.com/?q=Solo" target="_blank" class="btn btn-sm btn-outline-light mt-3 rounded-pill"><i class="fa-solid fa-map-pin me-1"></i>Lihat Lokasi</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAMILY -->
+    <section class="section-multi" id="family">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="section-tag"><i class="fa-solid fa-users me-2"></i>KELUARGA</span>
+                <h2 class="section-title">Keluarga <span class="multi">Besar</span></h2>
+                <p class="text-muted">Keluarga besar yang turut merayakan kebahagiaan</p>
+            </div>
+            <div class="family-grid">
+                <div class="family-item" onclick="openModal(this.querySelector('img').src)" data-aos="zoom-in"><img src="https://picsum.photos/seed/fam-multi1/400/400" alt="Family 1"><div class="family-label">Bapak Sugeng & Ibu Rini</div></div>
+                <div class="family-item" onclick="openModal(this.querySelector('img').src)" data-aos="zoom-in" data-aos-delay="50"><img src="https://picsum.photos/seed/fam-multi2/400/400" alt="Family 2"><div class="family-label">Bapak Hendra & Ibu Sari</div></div>
+                <div class="family-item" onclick="openModal(this.querySelector('img').src)" data-aos="zoom-in" data-aos-delay="100"><img src="https://picsum.photos/seed/fam-multi3/400/400" alt="Family 3"><div class="family-label">Kakak & Adik</div></div>
+                <div class="family-item" onclick="openModal(this.querySelector('img').src)" data-aos="zoom-in" data-aos-delay="150"><img src="https://picsum.photos/seed/fam-multi4/400/400" alt="Family 4"><div class="family-label">Semua Keluarga</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section-multi" id="gallery">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="section-tag"><i class="fa-solid fa-images me-2"></i>GALERI</span>
+                <h2 class="section-title">Galeri <span class="multi">Keluarga</span></h2>
+                <p class="text-muted">Momen-momen kebersamaan kami</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="gallery-grid">
+                        <div class="gallery-item" onclick="openModal(this.querySelector('img').src)"><img src="https://picsum.photos/seed/multi-gal1/600/800" alt="1"><div class="gallery-overlay">Pertunangan</div></div>
+                        <div class="gallery-item" onclick="openModal(this.querySelector('img').src)"><img src="https://picsum.photos/seed/multi-gal2/600/800" alt="2"><div class="gallery-overlay">Liburan Keluarga</div></div>
+                        <div class="gallery-item" onclick="openModal(this.querySelector('img').src)"><img src="https://picsum.photos/seed/multi-gal3/600/800" alt="3"><div class="gallery-overlay">Makan Malam</div></div>
+                        <div class="gallery-item" onclick="openModal(this.querySelector('img').src)"><img src="https://picsum.photos/seed/multi-gal4/600/800" alt="4"><div class="gallery-overlay">Persiapan Nikah</div></div>
+                        <div class="gallery-item" onclick="openModal(this.querySelector('img').src)"><img src="https://picsum.photos/seed/multi-gal5/600/800" alt="5"><div class="gallery-overlay">Kebersamaan</div></div>
+                        <div class="gallery-item" onclick="openModal(this.querySelector('img').src)"><img src="https://picsum.photos/seed/multi-gal6/600/800" alt="6"><div class="gallery-overlay">Satu Keluarga</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WISHES -->
+    <section class="section-multi" id="wishes">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="section-tag"><i class="fa-solid fa-comment me-2"></i>UCAPAN</span>
+                <h2 class="section-title">Ucapan & <span class="multi">Doa</span></h2>
+                <p class="text-muted">Kirim doa restu untuk Bagas & Karina beserta keluarga</p>
+            </div>
+            <div class="row justify-content-center g-4">
+                <div class="col-md-5" data-aos="fade-right">
+                    <div class="comment-section" style="max-height:400px;overflow-y:auto;">
+                        <div class="comment-card"><div class="d-flex justify-content-between"><span class="comment-name">Tante Yani</span><span class="comment-time">10 menit lalu</span></div><div class="comment-text">Selamat ya Bagas & Karina! Keluarga besar turut berbahagia 🎉</div></div>
+                        <div class="comment-card"><div class="d-flex justify-content-between"><span class="comment-name">Om Budi</span><span class="comment-time">30 menit lalu</span></div><div class="comment-text">Barakallah! Semoga jadi keluarga sakinah mawaddah 🤲</div></div>
+                        <div class="comment-card"><div class="d-flex justify-content-between"><span class="comment-name">Nenek Surti</span><span class="comment-time">2 jam lalu</span></div><div class="comment-text">Doa nenek selalu untuk kalian berdua. Rukun terus ya ❤️</div></div>
+                    </div>
+                </div>
+                <div class="col-md-5" data-aos="fade-left">
+                    <form onsubmit="sendWishes(event)">
+                        <div class="mb-3"><input type="text" class="form-control form-control-multi" id="wishName" placeholder="Nama Anda" required></div>
+                        <div class="mb-3"><input type="text" class="form-control form-control-multi" id="wishKehadiran" placeholder="Hadir / Tidak Hadir"></div>
+                        <div class="mb-3"><textarea class="form-control form-control-multi" id="wishMessage" rows="4" placeholder="Tulis ucapan dan doa..." required></textarea></div>
+                        
+                    <!-- Honeypot field - do not fill -->
+                    <div style="position:absolute;left:-9999px;opacity:0;" aria-hidden="true">
+                        <label for="website">Website</label>
+                        <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+                    </div>
+                    <button type="submit" class="btn btn-multi w-100"><i class="fa-solid fa-paper-plane me-2"></i>Kirim Ucapan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <section style="padding:4rem 0 6rem;text-align:center;">
+        <div class="container" data-aos="fade-up">
+            <div style="font-size:2rem;color:var(--multi-gold);">✦ ✦ ✦</div>
+            <h2 class="section-title mt-3" style="font-size:2rem;">Terima Kasih</h2>
+            <p class="text-muted">Kami sekeluarga besar mengucapkan terima kasih atas doa dan restunya.<br>Merupakan suatu kehormatan apabila Bapak/Ibu/Saudara/i berkenan hadir.</p>
+            <div class="mt-4"><p style="font-family:'Great Vibes',cursive;font-size:3rem;background:var(--multi-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Bagas & Karina</p></div>
+            <hr style="border-color:var(--multi-border);max-width:200px;margin:1rem auto;">
+            <p class="text-muted" style="font-size:0.75rem;">&copy; 2027 Petrikov Lumina - Multi Events</p>
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-dark border-0">
+                <div class="modal-body p-0"><img src="" id="modalImage" class="w-100 rounded"></div>
+                <div class="modal-footer border-0 justify-content-center"><button type="button" class="btn btn-sm btn-multi" data-bs-dismiss="modal">Tutup</button></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, duration: 1000 });
+
+        function updateCountdown() {
+            const t = new Date('2027-06-19T08:00:00+07:00').getTime();
+            const n = Date.now(); const d = Math.max(0, t - n);
+            document.getElementById('days').textContent = String(Math.floor(d / 86400000)).padStart(2,'0');
+            document.getElementById('hours').textContent = String(Math.floor((d % 86400000) / 3600000)).padStart(2,'0');
+            document.getElementById('minutes').textContent = String(Math.floor((d % 3600000) / 60000)).padStart(2,'0');
+            document.getElementById('seconds').textContent = String(Math.floor((d % 60000) / 1000)).padStart(2,'0');
+        }
+        updateCountdown(); setInterval(updateCountdown, 1000);
+
+        let audio = null, isPlaying = false;
+        function toggleAudio() {
+            if (!audio) { audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3'); audio.loop = true; }
+            if (isPlaying) { audio.pause(); document.getElementById('btnAudio').classList.remove('playing'); document.getElementById('btnAudio').innerHTML = '<i class="fa-solid fa-music"></i>'; }
+            else { audio.play(); document.getElementById('btnAudio').classList.add('playing'); document.getElementById('btnAudio').innerHTML = '<i class="fa-solid fa-pause"></i>'; }
+            isPlaying = !isPlaying;
+        }
+
+        function openModal(src) { document.getElementById('modalImage').src = src; new bootstrap.Modal(document.getElementById('imageModal')).show(); }
+
+        function sendWishes(e) {
+            e.preventDefault();
+            const name = document.getElementById('wishName').value, msg = document.getElementById('wishMessage').value;
+            const card = document.createElement('div'); card.className = 'comment-card';
+            card.innerHTML = `<div class="d-flex justify-content-between"><span class="comment-name">${name}</span><span class="comment-time">Baru saja</span></div><div class="comment-text">${msg}</div>`;
+            document.querySelector('.comment-section').prepend(card);
+            e.target.reset(); alert('Ucapan berhasil dikirim! Terima kasih ✦');
+        }
+
+        const sections = document.querySelectorAll('section[id]'), navLinks = document.querySelectorAll('.navbar-multi .nav-link');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(s => { if (window.scrollY >= s.offsetTop - 150) current = s.getAttribute('id'); });
+            navLinks.forEach(l => { l.classList.remove('active'); if (l.getAttribute('href') === '#' + current) l.classList.add('active'); });
+        });
+    </script>
+    <script src="/templates/js/api-integration.js"></script>
+</body>
+</html>
